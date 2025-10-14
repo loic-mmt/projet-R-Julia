@@ -1,4 +1,4 @@
-file <- "/Users/loic/Documents/UGA/Logiciel Spécialisé/Projet_R/projet-R-Julia/data_raw/ds_salaries.csv"
+file <- "data_raw/ds_salaries.csv"
 
 data <- read.csv2(file, header = TRUE, stringsAsFactors = FALSE, na.strings = c("", "NA"), fileEncoding = "UTF-8")
 
