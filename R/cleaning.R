@@ -18,3 +18,4 @@ print(nrow(data_2023))
 
 
 print(data)
+print(data)
