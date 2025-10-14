@@ -15,7 +15,3 @@ print(nrow(data_2020))
 print(nrow(data_2021))
 print(nrow(data_2022))
 print(nrow(data_2023))
-
-
-print(data)
-print(data)
