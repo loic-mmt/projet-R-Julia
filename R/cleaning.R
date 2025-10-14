@@ -5,6 +5,7 @@ data <- read.csv2(file, header = TRUE, stringsAsFactors = FALSE, na.strings = c(
 
 print(names(data))
 data <- data.frame(data)
+data <- data[, -5]
 
 data_2020 <- subset(data, work_year == 2020)
 data_2021 <- subset(data, work_year == 2021)
@@ -15,3 +16,4 @@ print(nrow(data_2020))
 print(nrow(data_2021))
 print(nrow(data_2022))
 print(nrow(data_2023))
+
