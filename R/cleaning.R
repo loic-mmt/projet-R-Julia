@@ -51,6 +51,7 @@ root <- get_project_root()
 cat("Project root:", root, "\n")
 # ----------------------------------------------------------------
 
+
 file <- file.path(root, "data_raw", "ds_salaries.csv")
 
 data <- read.csv2(file, header = TRUE, stringsAsFactors = FALSE, na.strings = c("", "NA"), fileEncoding = "UTF-8")
@@ -86,3 +87,4 @@ print(nrow(data_2020))
 print(nrow(data_2021))
 print(nrow(data_2022))
 print(nrow(data_2023))
+
