@@ -1,0 +1,49 @@
+
+
+Package: analyse — Liste minimale des fonctions (noms + rôle)
+=============================================================
+
+# Descriptifs & regroupements
+describe_overview — Statistiques globales (N, moy/med, min/max, quantiles).
+summarize_salary — Statistiques (médiane, IQR, moyenne) par groupe.
+salary_quantiles — Quantiles clés par groupe.
+salary_distribution — Données prêtes pour densité/histogramme des salaires.
+association_table — Table croisée + mesure d’association (Cramér V) pour catégorielles.
+correlation_matrix — Matrice de corrélation pour variables numériques.
+
+# Tests d’hypothèses
+normality_test — Tester la normalité (par groupe ou sur résidus).
+variance_homogeneity_test — Tester l’homogénéité des variances (Levene/Bartlett).
+compare_groups_salary — Comparer les groupes (ANOVA ou Kruskal selon hypothèses).
+posthoc_multiple_comparisons — Post-hoc (Tukey/Dunn) avec correction des p-values.
+effect_size_salary — Calculer les tailles d’effet (eta², d de Cohen, delta de Cliff).
+
+# Modélisation
+fit_salary_lm — Ajuster un modèle linéaire pour le salaire.
+fit_salary_glm — Ajuster un GLM alternatif si pertinent.
+fit_salary_quantile — Ajuster une régression quantile (robuste aux outliers).
+model_summary — Résumé standardisé des modèles (coeffs, IC, métriques).
+predict_salary — Générer des prédictions sur nouvelles données.
+partial_effects — Calculer les effets marginaux.
+interaction_effects — Estimer et synthétiser les interactions clés.
+
+# Validation & diagnostics
+kfold_cv — Validation croisée K-fold (RMSE/MAE/R²).
+check_model_assumptions — Vérifier les hypothèses du modèle (résidus, hétéroscédasticité, influence).
+influential_points — Détecter les points influents (Cook’s distance, leverage).
+
+# Visualisation (objets/préparation)
+plot_salary_distributions — Graphiques de distribution des salaires.
+plot_group_comparisons — Box/violin par groupe, prêts à tracer.
+plot_model_diagnostics — QQ plot et résidus vs ajustés.
+plot_effects — Visualiser effets marginaux et interactions.
+autoplot_salary_lm — Autoplot S3 pour l’objet de modèle salary_lm.
+
+# Tableaux pour le rapport
+table_model_coefficients — Tableau des coefficients avec IC et p-values.
+table_summary_groups — Tableau des statistiques par groupe.
+
+# Helpers (API interne)
+summarize_by — Raccourci de regroupement/agrégation (tidy-eval).
+to_salary_tbl — S’assurer que l’objet d’entrée est un salary_tbl.
+format_p — Mise en forme des p-values pour le rapport.
