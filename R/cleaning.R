@@ -74,7 +74,7 @@ head(df)
 
 out_dir <- file.path(root, "data_proc")
 if (!dir.exists(out_dir)) dir.create(out_dir, recursive = TRUE)
-out_path <- file.path(out_dir, "ds_salaries.csv")
+out_path <- file.path(out_dir, "ds_salaries_corr.csv")
 write.csv2(df, out_path, row.names = FALSE, fileEncoding = "UTF-8")
 
 data_2020 <- subset(data, work_year == 2020)
