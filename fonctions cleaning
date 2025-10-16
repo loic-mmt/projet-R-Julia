@@ -19,7 +19,7 @@ normalize_country_codes — Convertir pays en codes ISO cohérents (+ région si
 
 # Monnaie & montants
 convert_currency_to_usd — Convertir salaires en USD et vérifier la cohérence.
-compute_salary_ppp — Calculer un salaire ajusté en parité de pouvoir d'achat (optionnel).
+compute_salary_ppp — Calculer un salaire ajusté en parité de pouvoir d achat (optionnel).
 
 # Données manquantes
 handle_missing — Gérer les NA (suppression ou imputation simple).
