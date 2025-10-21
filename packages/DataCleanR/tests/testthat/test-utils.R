@@ -1,3 +1,4 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("say_hello salue correctement", {
+  expect_equal(say_hello("Alice"), "Hello, Alice !")
+  expect_type(say_hello("Bob"), "character")
 })
