@@ -2,7 +2,7 @@ Package: cleaning — Liste minimale des fonctions (noms + rôle)
 ==============================================================
 
 # I/O & Validation
-load_raw_csv — Lire le CSV brut et retourner un tibble.
+load_raw_csv — Lire le CSV brut et retourner un tibble. OK
 validate_schema — Vérifier la présence des colonnes nécessaires.
 standardize_colnames — Uniformiser les noms de colonnes en snake_case.
 enforce_types — Convertir les colonnes aux bons types (numériques, facteurs, etc.).
