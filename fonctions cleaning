@@ -36,8 +36,3 @@ finalize_salary_tbl — Assigner la classe S3 salary_tbl pour le dispatch ultér
 # Export & reporting
 export_cleaned_csv — Exporter le dataset propre (global ou par année).
 write_cleaning_report — Résumer les opérations de nettoyage (compteurs, outliers, NA).
-
-# Aliases
-load_data — Alias de load_raw_csv.
-delete_NA — Alias de handle_missing (mode suppression).
-export_data — Alias de export_cleaned_csv.

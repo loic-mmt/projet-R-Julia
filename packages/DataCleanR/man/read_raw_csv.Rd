@@ -2,19 +2,16 @@
 % Please edit documentation in R/validation.R
 \name{read_raw_csv}
 \alias{read_raw_csv}
-\title{Say hello}
+\title{Import CSV as data.frame}
 \usage{
 read_raw_csv(file_path)
 }
 \arguments{
-\item{name}{A character string with the person's name.}
+\item{path}{chemin vers le CSV}
 }
 \value{
-A character string saying hello.
+data.frame
 }
 \description{
-A simple example function that greets a person.
-}
-\examples{
-say_hello("Alice")
+Import CSV as data.frame
 }
