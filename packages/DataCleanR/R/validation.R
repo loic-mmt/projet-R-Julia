@@ -1,14 +1,7 @@
-#' 
-#'
-#' A simple example function that greets a person.
-#'
-#' @param name A character string with the person's name.
-#'
-#' @return A character string saying hello.
+#' Import CSV as data.frame
+#' @param path chemin vers le CSV
+#' @return data.frame
 #' @export
-#'
-#' @examples
-#' say_hello("Alice")
 read_raw_csv <- function(file_path) {
   data <- read.csv(file_path, stringsAsFactors = FALSE)
   return(data)
