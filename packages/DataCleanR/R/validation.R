@@ -1,4 +1,4 @@
-#' Say hello
+#' 
 #'
 #' A simple example function that greets a person.
 #'
@@ -9,6 +9,7 @@
 #'
 #' @examples
 #' say_hello("Alice")
-say_hello <- function(name) {
-  paste("Hello,", name, "!")
+read_raw_csv <- function(file_path) {
+  data <- read.csv(file_path, stringsAsFactors = FALSE)
+  return(data)
 }
