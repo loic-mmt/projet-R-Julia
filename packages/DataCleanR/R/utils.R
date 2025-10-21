@@ -12,4 +12,3 @@
 say_hello <- function(name) {
   paste("Hello,", name, "!")
 }
-devtools::document("PackageRClean")
