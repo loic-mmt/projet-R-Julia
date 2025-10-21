@@ -1,5 +1,6 @@
 Package: analyse (Julia) — Liste minimale des fonctions (noms + rôle)
 =====================================================================
+Même ordre que fonction en R.
 
 # Descriptifs & regroupements
 describe_overview — Statistiques globales (N, moy/med, min/max, quantiles).
