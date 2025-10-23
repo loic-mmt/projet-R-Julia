@@ -14,3 +14,13 @@ test_that("to_snake_case", {
   names(df) <- to_snake_case(names(df))
   expect_equal(names(df), c("nom_client", "montant_total", "date_de_vente"))
 })
+
+test_that("validate_schema", {
+  df <- data.frame(a = 1:3, b = c("x", "y", "z"))
+  names_to_test1 <- c("a", "c")
+  names_to_test2 <- c("a", "b", "c")
+  test1 <- validate_schema(df, names_to_test1))
+  test2 <- validate_schema(df, names_to_test2))
+  expect_equal(list(test1, test2), list("All required colums are present in the dataframe", "The dataframe in not complete and it's missing c"))
+}
+)
