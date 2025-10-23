@@ -24,3 +24,42 @@ test_that("to_snake_case", {
   expect_equal(names(df), c("nom_client", "montant_total", "date_de_vente"))
 })
 
+
+test_that("enforce_types", {
+  # Création du dataframe de test
+  df <- data.frame(
+    numeric_col = c("1.5", "2.2", "3.1"),
+    int_col = c("1", "2", "3"),
+    factor_col = c("A", "B", "A"),
+    char_col = c("Alice", "Bob", "Charlie"),
+    stringsAsFactors = FALSE
+  )
+  
+  # Application de la fonction
+  df_clean <- enforce_types(df, num_threshold = 0.9, max_factor_levels = 10)
+  
+  # Tests
+  expect_true(is.numeric(df_clean$numeric_col), info = "numeric_col doit être numeric")
+  expect_true(is.integer(df_clean$int_col), info = "int_col doit être integer")
+  expect_true(is.factor(df_clean$factor_col), info = "factor_col doit être factor")
+  expect_true(is.factor(df_clean$char_col), info = "char_col doit être factor maintenant")
+  
+  expect_equal(df_clean$numeric_col, c(1.5, 2.2, 3.1))
+  expect_equal(levels(df_clean$factor_col), c("A", "B"))
+})
+
+
+
+test_that("deduplicate_rows", {
+  df <- data.frame(
+    id = c(1, 1, 2, 2, 3),
+    job = c("DE", "DE", "DS", "DS", "DE"),
+    salary = c(100, 100, 200, 200, 300)
+  )
+
+  out <- DataCleanR::deduplicate_rows(df)
+
+  expect_equal(nrow(out), 3)
+  expect_equal(attr(out, "n_removed"), 2)
+  expect_equal(out, df[c(1, 3, 5), ], ignore_attr = TRUE)
+})

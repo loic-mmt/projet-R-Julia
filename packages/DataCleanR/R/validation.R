@@ -100,3 +100,34 @@ enforce_types <- function(data, num_threshold = 0.9, max_factor_levels = 20) {
   }
   return(out)
 }
+
+
+#' Deduplicate data
+#'
+#' @param data data to deduplicate.
+#' @param keys character|null Columns used as unique key; default NULL = all columns.
+#' @param keep character Keep "first" or "last" occurrence when duplicates exist.
+#' @return deduplicated data.
+#' @export
+deduplicate_rows <- function(data, keys = NULL, keep = c("first", "last")) {
+  keep <- match.arg(keep)
+
+  if (!is.data.frame(data)) {
+    stop("'data' doit être un data.frame")
+  }
+  if (is.null(keys)) {
+    keys <- names(data)
+  } else {
+    inconnues <- setdiff(keys, names(data))
+    if (length(inconnues) > 0) {
+      stop("Clés inconnues: ", paste(inconnues, collapse = ", "))
+    }
+  }
+  from_last <- identical(keep, "last")
+  dup <- duplicated(data[keys], fromLast = from_last)
+
+  out <- data[!dup, , drop = FALSE]
+
+  attr(out, "n_removed") <- sum(dup)
+  return(out)
+}
