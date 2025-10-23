@@ -72,7 +72,7 @@ test_that("enforce_types", {
   expect_true(is.numeric(df_clean$numeric_col), info = "numeric_col doit être numeric")
   expect_true(is.integer(df_clean$int_col), info = "int_col doit être integer")
   expect_true(is.factor(df_clean$factor_col), info = "factor_col doit être factor")
-  expect_true(is.character(df_clean$char_col), info = "char_col doit rester character")
+  expect_true(is.factor(df_clean$char_col), info = "char_col doit être factor maintenant")
   
   expect_equal(df_clean$numeric_col, c(1.5, 2.2, 3.1))
   expect_equal(levels(df_clean$factor_col), c("A", "B"))
