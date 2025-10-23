@@ -50,3 +50,16 @@ test_that("enforce_types", {
 
 
 
+test_that("deduplicate_rows", {
+  df <- data.frame(
+    id = c(1, 1, 2, 2, 3),
+    job = c("DE", "DE", "DS", "DS", "DE"),
+    salary = c(100, 100, 200, 200, 300)
+  )
+
+  out <- DataCleanR::deduplicate_rows(df)
+
+  expect_equal(nrow(out), 3)
+  expect_equal(attr(out, "n_removed"), 2)
+  expect_equal(out, df[c(1, 3, 5), ], ignore_attr = TRUE)
+})

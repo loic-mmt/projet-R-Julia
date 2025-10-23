@@ -101,6 +101,14 @@ enforce_types <- function(data, num_threshold = 0.9, max_factor_levels = 20) {
   return(out)
 }
 
+
+#' Deduplicate data
+#'
+#' @param data data to deduplicate.
+#' @param keys character|null Columns used as unique key; default NULL = all columns.
+#' @param keep character Keep "first" or "last" occurrence when duplicates exist.
+#' @return deduplicated data.
+#' @export
 deduplicate_rows <- function(data, keys = NULL, keep = c("first", "last")) {
   keep <- match.arg(keep)
 
