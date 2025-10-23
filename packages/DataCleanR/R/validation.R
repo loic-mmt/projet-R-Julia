@@ -8,18 +8,36 @@ read_raw_csv <- function(file_path) {
   return(data)
 }
 
+
+#' Test the presence of required colums in a dataframe
+#'
+#' @param dataframe Dataframe to test
+#' @param required_colums vector with the required colums names to test in dataframe
+#' @return presence Indication to the user on the preence of the colums
+#' @export
+validate_schema <- function(dataframe, required_colums) {
+    not_commun <- required_colums[!required_colums %in% names(dataframe)]
+    presence <- ""
+    if (length(not_commun) == 0) {
+        presence <- "All required colums are present in the dataframe"
+    }
+    else {
+        presence <- paste("The dataframe in not complete and it's missing", paste(not_commun, collapse = ", "))
+    }
+    return(presence)
+}
+
 #' Convert strings to snake_case
 #'
 #' @param data character Vector of strings to convert.
 #' @return character Vector in snake_case.
 #' @export
 to_snake_case <- function(data) {
-  data <- gsub(" ", "_", data)
-  data <- gsub("-", "_", data)
-  data <- gsub("([a-z])([A-Z])", "\\1_\\2", data)
+  data <- gsub("[^A-Za-z0-9]+", "_", data)
+  data <- gsub("([a-z0-9])([A-Z])", "\\1_\\2", data)
   data <- tolower(data)
-  data <- gsub("__+", "_", data)
-  data <- gsub("[^a-z0-9_]", "", data)
+  data <- gsub("_+", "_", data)
+  data <- gsub("^_+|_+$", "", data)
   return(data)
 }
 
@@ -81,22 +99,4 @@ enforce_types <- function(data, num_threshold = 0.9, max_factor_levels = 20) {
     out[[col]] <- as.character(x)
   }
   return(out)
-}
-
-#' Test the presence of required colums in a dataframe
-#'
-#' @param dataframe Dataframe to test
-#' @param required_colums vector with the required colums names to test in dataframe
-#' @return presence Indication to the user on the preence of the colums
-#' @export
-validate_schema <- function(dataframe, required_colums) {
-    not_commun <- required_colums[!required_colums %in% names(dataframe)]
-    presence <- ""
-    if (length(not_commun) == 0) {
-        presence <- "All required colums are present in the dataframe"
-    }
-    else {
-        presence <- paste("The dataframe in not complete and it's missing", paste(not_commun, collapse = ", "))
-    }
-    return(presence)
 }
