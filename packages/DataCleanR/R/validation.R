@@ -1,10 +1,9 @@
 #' Import CSV as data.frame
-#' @name read_raw_csv
 #' @param file_path chemin vers le CSV
 #' @return data.frame
 #' @export
 read_raw_csv <- function(file_path) {
-  data <- read.csv(file_path, stringsAsFactors = FALSE)
+  data <- read.csv(file_path, sep = ";", stringsAsFactors = FALSE)
   return(data)
 }
 
@@ -28,7 +27,6 @@ validate_schema <- function(dataframe, required_colums) {
 }
 
 #' Convert strings to snake_case
-#' @name to_snake_case
 #' @param data character Vector of strings to convert.
 #' @return character Vector in snake_case.
 #' @export
