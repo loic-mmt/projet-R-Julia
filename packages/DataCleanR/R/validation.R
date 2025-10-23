@@ -8,20 +8,10 @@ read_raw_csv <- function(file_path) {
   return(data)
 }
 
-#' Convertir du texte en snake_case
-#' @name to_snake_case
-#' Transforme un vecteur de chaînes (ex. noms de colonnes) en *snake_case* cohérent.
-#' Règles appliquées : espaces et tirets -> `_`, multiples `_` compressés,
-#' suppression des caractères non alphanumériques (hors `_`), puis passage en minuscules.
+#' Convert strings to snake_case
 #'
-#' @param data character Vecteur de chaînes à convertir (p. ex. `names(df)`).
-#' @return character Vecteur converti en *snake_case*, de même longueur que `data`.
-#' @examples
-#' to_snake_case(c("Employee Residence", "Salary-USD", "Company Size"))
-#' # [1] "employee_residence" "salary_usd" "company_size"
-#' # Renommer des colonnes d'un data.frame :
-#' # names(df) <- to_snake_case(names(df))
-#' @seealso janitor::make_clean_names, snakecase::to_any_case
+#' @param data character Vector of strings to convert.
+#' @return character Vector in snake_case.
 #' @export
 to_snake_case <- function(data) {
   data <- gsub(" ", "_", data)
@@ -33,28 +23,12 @@ to_snake_case <- function(data) {
   return(data)
 }
 
-#' Convertir automatiquement les colonnes aux types appropriés
-#' @name enforce_types
-#' Cette fonction analyse chaque colonne d'un dataframe et la convertit
-#' automatiquement vers le type le plus approprié (numeric, integer, factor ou character).
+#' Enforce simple column types
 #'
-#' @param data Un dataframe à convertir
-#' @param num_threshold Seuil de conversion numérique. Une colonne est convertie
-#'   en numérique si au moins ce pourcentage de valeurs sont numériques (défaut: 0.9)
-#' @param max_factor_levels Nombre maximum de niveaux uniques pour qu'une colonne
-#'   soit convertie en facteur
-#'
-#' @return Un dataframe avec les colonnes converties aux types appropriés
-#'
-#' @details
-#' La fonction applique les règles suivantes dans l'ordre :
-#' \itemize{
-#'   \item Si >= num_threshold% des valeurs sont numériques : conversion en numeric ou integer
-#'   \item Si <= max_factor_levels valeurs uniques : conversion en factor
-#'   \item Sinon : reste en character
-#' }
-#'
-#'
+#' @param data data.frame Input data
+#' @param num_threshold numeric Proportion threshold for numeric conversion (default 0.9)
+#' @param max_factor_levels integer Max distinct levels to convert to factor (default 20)
+#' @return data.frame Data with basic types enforced
 #' @export
 enforce_types <- function(data, num_threshold = 0.9, max_factor_levels = 20) {
   out <- data
