@@ -1,5 +1,5 @@
 #' Import CSV as data.frame
-#' @param path chemin vers le CSV
+#' @param file_path chemin vers le CSV
 #' @return data.frame
 #' @export
 read_raw_csv <- function(file_path) {
@@ -8,7 +8,7 @@ read_raw_csv <- function(file_path) {
 }
 
 
-##'
+#'
 #' Convertir du texte en snake_case
 #'
 #' Transforme un vecteur de chaînes (ex. noms de colonnes) en *snake_case* cohérent.
@@ -61,13 +61,6 @@ to_snake_case <- function(data) {
 #'
 #' @export
 enforce_types <- function(data, num_threshold = 0.9, max_factor_levels = 20) {
-  #' Convertir automatiquement les colonnes aux types appropriés
-  #'
-  #' @param data Dataframe à convertir
-  #' @param num_threshold Seuil pour conversion numérique (90% des valeurs doivent être numériques)
-  #' @param max_factor_levels Nombre maximum de niveaux pour un facteur (défaut: 20)
-  #' @return Dataframe avec types convertis
-  
   out <- data
   
   for (col in names(out)) {
