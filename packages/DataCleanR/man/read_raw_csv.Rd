@@ -7,7 +7,7 @@
 read_raw_csv(file_path)
 }
 \arguments{
-\item{path}{chemin vers le CSV}
+\item{file_path}{chemin vers le CSV}
 }
 \value{
 data.frame

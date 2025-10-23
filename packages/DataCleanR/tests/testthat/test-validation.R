@@ -6,3 +6,11 @@ test_that("read_raw_csv importe correctement", {
   expect_equal(imported_df, df)
   expect_true(is.data.frame(imported_df))
 })
+
+test_that("to_snake_case", {
+  df <- data.frame("Nom Client" = c("Alice", "Bob"),
+                   "MontantTotal" = c(100, 200),
+                   "Date-De-Vente" = c("2024-01-01", "2024-01-02"))
+  names(df) <- to_snake_case(names(df))
+  expect_true(names(df) == "nom_client", "montant_total", "date_de_vente")
+})
