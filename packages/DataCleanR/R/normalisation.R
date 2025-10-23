@@ -13,7 +13,8 @@ normalize_factor <- function(vector, mapping, levels_in_factor, ordered_factor =
   return(normalized)
 }
 
-
+#'
+#' 
 #' @param data data.frame contenant la colonne `remote_ratio`
 #' @param binary logique, si TRUE convertit en 0/100 (par défaut FALSE)
 #' @param threshold seuil pour le binaire (défaut 50)
