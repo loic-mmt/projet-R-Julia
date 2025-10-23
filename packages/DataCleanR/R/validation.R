@@ -17,9 +17,9 @@ to_snake_case <- function(data) {
   data <- gsub(" ", "_", data)
   data <- gsub("-", "_", data)
   data <- gsub("([a-z])([A-Z])", "\\1_\\2", data)
+  data <- tolower(data)
   data <- gsub("__+", "_", data)
   data <- gsub("[^a-z0-9_]", "", data)
-  data <- tolower(data)
   return(data)
 }
 
