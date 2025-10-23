@@ -28,7 +28,7 @@ validate_schema <- function(dataframe, required_colums) {
 }
 
 #' Convert strings to snake_case
-#'
+#' @name to_snake_case
 #' @param data character Vector of strings to convert.
 #' @return character Vector in snake_case.
 #' @export
