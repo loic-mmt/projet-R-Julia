@@ -92,7 +92,7 @@ enforce_types <- function(data, num_threshold = 0.9, max_factor_levels = 20) {
 validate_schema <- function(dataframe, required_colums) {
     not_commun <- required_colums[!required_colums %in% names(dataframe)]
     presence <- ""
-    if (lenght(not_commun) == 0) {
+    if (length(not_commun) == 0) {
         presence <- "All required colums are present in the dataframe"
     }
     else {
