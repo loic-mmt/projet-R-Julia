@@ -82,3 +82,21 @@ enforce_types <- function(data, num_threshold = 0.9, max_factor_levels = 20) {
   }
   return(out)
 }
+
+#' Test the presence of required colums in a dataframe
+#'
+#' @param dataframe Dataframe to test
+#' @param required_colums vector with the required colums names to test in dataframe
+#' @return presence Indication to the user on the preence of the colums
+#' @export
+validate_schema <- function(dataframe, required_colums) {
+    not_commun <- required_colums[!required_colums %in% names(dataframe)]
+    presence <- ""
+    if (lenght(not_commun) == 0) {
+        presence <- "All required colums are present in the dataframe"
+    }
+    else {
+        presence <- paste("The dataframe in not complete and it's missing", paste(not_commun, collapse = ", "))
+    }
+    return(presence)
+}
