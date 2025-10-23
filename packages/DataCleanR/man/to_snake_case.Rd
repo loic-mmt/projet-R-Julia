@@ -2,27 +2,16 @@
 % Please edit documentation in R/validation.R
 \name{to_snake_case}
 \alias{to_snake_case}
-\title{Convertir du texte en snake_case}
+\title{Convert strings to snake_case}
 \usage{
 to_snake_case(data)
 }
 \arguments{
-\item{data}{character Vecteur de chaînes à convertir (p. ex. \code{names(df)}).}
+\item{data}{character Vector of strings to convert.}
 }
 \value{
-character Vecteur converti en \emph{snake_case}, de même longueur que \code{data}.
+character Vector in snake_case.
 }
 \description{
-Transforme un vecteur de chaînes (ex. noms de colonnes) en \emph{snake_case} cohérent.
-Règles appliquées : espaces et tirets → \verb{_}, multiples \verb{_} compressés,
-Suppression des caractères non alphanumériques (hors \verb{_}), puis passage en minuscules.
-}
-\examples{
-to_snake_case(c("Employee Residence", "Salary-USD", "Company Size"))
-# [1] "employee_residence" "salary_usd" "company_size"
-# Renommer des colonnes d'un data.frame :
-# names(df) <- to_snake_case(names(df))
-}
-\seealso{
-janitor::make_clean_names, snakecase::to_any_case
+Convert strings to snake_case
 }

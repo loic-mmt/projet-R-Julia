@@ -2,34 +2,20 @@
 % Please edit documentation in R/validation.R
 \name{enforce_types}
 \alias{enforce_types}
-\title{Convertir automatiquement les colonnes aux types appropriés
-Cette fonction analyse chaque colonne d'un dataframe et la convertit
-automatiquement vers le type le plus approprié (numeric, integer, factor ou character).}
+\title{Enforce simple column types}
 \usage{
 enforce_types(data, num_threshold = 0.9, max_factor_levels = 20)
 }
 \arguments{
-\item{data}{Un dataframe à convertir}
+\item{data}{data.frame Input data}
 
-\item{num_threshold}{Seuil de conversion numérique. Une colonne est convertie
-en numérique si au moins ce pourcentage de valeurs sont numériques (défaut: 0.9)}
+\item{num_threshold}{numeric Proportion threshold for numeric conversion (default 0.9)}
 
-\item{max_factor_levels}{Nombre maximum de niveaux uniques pour qu'une colonne
-soit convertie en facteur}
+\item{max_factor_levels}{integer Max distinct levels to convert to factor (default 20)}
 }
 \value{
-Un dataframe avec les colonnes converties aux types appropriés
+data.frame Data with basic types enforced
 }
 \description{
-Convertir automatiquement les colonnes aux types appropriés
-Cette fonction analyse chaque colonne d'un dataframe et la convertit
-automatiquement vers le type le plus approprié (numeric, integer, factor ou character).
-}
-\details{
-La fonction applique les règles suivantes dans l'ordre :
-\itemize{
-\item Si >= num_threshold\% des valeurs sont numériques : conversion en numeric ou integer
-\item Si <= max_factor_levels valeurs uniques : conversion en factor
-\item Sinon : reste en character
-}
+Enforce simple column types
 }
