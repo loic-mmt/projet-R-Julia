@@ -9,16 +9,16 @@ automatiquement vers le type le plus approprié (numeric, integer, factor ou cha
 enforce_types(data, num_threshold = 0.9, max_factor_levels = 20)
 }
 \arguments{
-\item{data}{Dataframe à convertir}
+\item{data}{Un dataframe à convertir}
 
-\item{num_threshold}{Seuil pour conversion numérique (90\% des valeurs doivent être numériques)}
+\item{num_threshold}{Seuil de conversion numérique. Une colonne est convertie
+en numérique si au moins ce pourcentage de valeurs sont numériques (défaut: 0.9)}
 
-\item{max_factor_levels}{Nombre maximum de niveaux pour un facteur (défaut: 20)}
+\item{max_factor_levels}{Nombre maximum de niveaux uniques pour qu'une colonne
+soit convertie en facteur}
 }
 \value{
 Un dataframe avec les colonnes converties aux types appropriés
-
-Dataframe avec types convertis
 }
 \description{
 Convertir automatiquement les colonnes aux types appropriés

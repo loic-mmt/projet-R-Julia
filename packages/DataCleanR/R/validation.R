@@ -1,4 +1,5 @@
 #' Import CSV as data.frame
+#' @name read_raw_csv
 #' @param file_path chemin vers le CSV
 #' @return data.frame
 #' @export
@@ -7,13 +8,11 @@ read_raw_csv <- function(file_path) {
   return(data)
 }
 
-
-#'
 #' Convertir du texte en snake_case
-#'
+#' @name to_snake_case
 #' Transforme un vecteur de chaînes (ex. noms de colonnes) en *snake_case* cohérent.
-#' Règles appliquées : espaces et tirets → `_`, multiples `_` compressés,
-#' Suppression des caractères non alphanumériques (hors `_`), puis passage en minuscules.
+#' Règles appliquées : espaces et tirets -> `_`, multiples `_` compressés,
+#' suppression des caractères non alphanumériques (hors `_`), puis passage en minuscules.
 #'
 #' @param data character Vecteur de chaînes à convertir (p. ex. `names(df)`).
 #' @return character Vecteur converti en *snake_case*, de même longueur que `data`.
@@ -34,11 +33,8 @@ to_snake_case <- function(data) {
   return(data)
 }
 
-
-
-
-
 #' Convertir automatiquement les colonnes aux types appropriés
+#' @name enforce_types
 #' Cette fonction analyse chaque colonne d'un dataframe et la convertit
 #' automatiquement vers le type le plus approprié (numeric, integer, factor ou character).
 #'
