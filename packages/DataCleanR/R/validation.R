@@ -14,12 +14,11 @@ read_raw_csv <- function(file_path) {
 #' @return character Vector in snake_case.
 #' @export
 to_snake_case <- function(data) {
-  data <- gsub(" ", "_", data)
-  data <- gsub("-", "_", data)
-  data <- gsub("([a-z])([A-Z])", "\\1_\\2", data)
+  data <- gsub("[^A-Za-z0-9]+", "_", data)
+  data <- gsub("([a-z0-9])([A-Z])", "\\1_\\2", data)
   data <- tolower(data)
-  data <- gsub("__+", "_", data)
-  data <- gsub("[^a-z0-9_]", "", data)
+  data <- gsub("_+", "_", data)
+  data <- gsub("^_+|_+$", "", data)
   return(data)
 }
 

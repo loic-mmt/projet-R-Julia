@@ -3,3 +3,4 @@
 export(enforce_types)
 export(read_raw_csv)
 export(to_snake_case)
+export(validate_schema)
