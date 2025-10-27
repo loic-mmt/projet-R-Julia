@@ -35,6 +35,22 @@ normalize_remote_ratio <- function(data, binary = FALSE, threshold = 50) {
 }
 
 
+#' Normalize country codes to ISO-3166 alpha-2
+#'
+#' Standardise a country column to ISO2 (uppercase, trimmed), optionally add a
+#' simple continent label, and validate values. Handles common synonyms and
+#' converts from ISO3 or country names using internal lookup tables (no external deps).
+#'
+#' @param data A data.frame containing the column to normalize.
+#' @param col Name of the input column in `data` (default: "company_location").
+#' @param output_col Name of the output column to write (default: same as `col`).
+#' @param add_region Logical; add a continent column (default: TRUE).
+#' @param region_col Name of the continent column to create when `add_region=TRUE`.
+#' @param strict Logical; if TRUE, stop on unknown/non-standard codes after normalization.
+#' @param verbose Logical; if TRUE, print messages about changes and anomalies.
+#'
+#' @return The input `data` with a normalized ISO2 column (and optional region).
+#' @export
 normalize_country_codes <- function(data,
                                     col = "company_location",
                                     output_col = col,

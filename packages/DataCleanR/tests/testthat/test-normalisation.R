@@ -13,4 +13,13 @@ test_that("normalize_factor", {
   expect_equal(as.character(result), c("Full-time", "Part-time", "Freelance", "Contract",  "Part-time", "Unknown"))
   expect_equal(levels(result), levels_test)
   expect_true(is.ordered(result2))
-  })
+})
+
+
+test_that("normalize_country_codes", {
+  data_test <- data.frame(
+                          a = 1:3,
+                          b = c("Etats-Unis", "GB", "France"))
+  test <- normalize_country_codes(data_test, col = b)
+  expect_equal(data_test[2], c("US", "UK", "FR"))
+})
