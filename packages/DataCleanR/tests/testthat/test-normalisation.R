@@ -19,7 +19,9 @@ test_that("normalize_factor", {
 test_that("normalize_country_codes", {
   data_test <- data.frame(
                           a = 1:3,
-                          b = c("Etats-Unis", "GB", "France"))
-  test <- normalize_country_codes(data_test, col = b)
-  expect_equal(data_test[2], c("US", "UK", "FR"))
+                          b = c("UNITED STATES", "GB", "France"),
+                          stringsAsFactors = FALSE)
+  out <- normalize_country_codes(data_test, col = "b")
+  expect_true(all(is.na(out$b) | grepl("^[A-Z]{2}$", out$b)))
+  expect_equal(out$b, c("US", "GB", "FR"))
 })

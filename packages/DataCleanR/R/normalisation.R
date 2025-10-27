@@ -63,7 +63,7 @@ normalize_country_codes <- function(data,
   if (!col %in% names(data)) stop(sprintf("Colonne '%s' introuvable dans data", col))
 
   v_in <- as.character(data[[col]])
-  v <- toupper(trimws(v))
+  v <- toupper(trimws(v_in))
 
 
   synonyms <- c(
@@ -88,7 +88,7 @@ normalize_country_codes <- function(data,
 
 
   name_to_iso2 <- c(
-    "UNITED STATES"="US","UNITED KINGDOM"="GB","GREAT BRITAIN"="GB","ENGLAND"="GB",
+    "UNITED STATES"="US","UNITED KINGDOM"="GB","GREAT BRITAIN"="GB","ENGLAND"="GB", "FRANCE" = "FR",
     "CZECH REPUBLIC"="CZ","CZECHIA"="CZ","RUSSIA"="RU","REPUBLIC OF KOREA"="KR","SOUTH KOREA"="KR",
     "NORTH KOREA"="KP","VIETNAM"="VN","VIET NAM"="VN","HONG KONG"="HK","TAIWAN"="TW",
     "UNITED ARAB EMIRATES"="AE","UAE"="AE","SAUDI ARABIA"="SA","TURKEY"="TR","TÜRKIYE"="TR",
