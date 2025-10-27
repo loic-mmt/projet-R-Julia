@@ -2,3 +2,4 @@ devtools::load_all("~/Documents/UGA/LogSpe/Projet_R/projet-R-Julia/packages/Data
 data <- DataCleanR::read_raw_csv("data_raw/ds_salaries.csv")
 names(data) <- DataCleanR::to_snake_case(names(data))
 head(data)
+
