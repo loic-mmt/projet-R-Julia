@@ -8,7 +8,7 @@ test_that("impute_missing: numeric median + categorical new_level", {
                         cat_method = "new_level", cat_constant = "Unkown",
                         verbose = FALSE)
 
-  expect_equal(out$x, c(1, 2, 3, 2))                  # median(1,3)=2
+  expect_equal(out$x, c(1, 2, 3, 2))
   expect_true(is.factor(out$y))
   expect_true(all(c("a","b","Unkown") %in% levels(out$y)))
   expect_equal(as.character(out$y), c("a","Unkown","a","Unkown"))
