@@ -21,10 +21,10 @@ test_that("export_csv supports comma separator and custom filename", {
   filename <- "out.csv"
   res <- export_csv(df, path = tmp, filename = filename, sep = ",", verbose = FALSE)
 
-  expect_true(file.exists(file.path(tmp, fname)))
-  expect_equal(res, file.path(tmp, fname))
+  expect_true(file.exists(file.path(tmp, filename)))
+  expect_equal(res, file.path(tmp, filename))
 
-  back <- utils::read.csv(file.path(tmp, fname), stringsAsFactors = FALSE)
+  back <- utils::read.csv(file.path(tmp, filename), stringsAsFactors = FALSE)
   expect_identical(back, df)
 })
 
