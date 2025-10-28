@@ -1,3 +1,22 @@
+test_that("normalize_remote_ratio works correctly", {
+  
+  # Test 1: Conversion et bornes
+  df <- data.frame(remote_ratio = c("50", "-10", "150", "abc"))
+  result <- normalize_remote_ratio(df)
+  expect_equal(result$remote_ratio[1], 50)
+  expect_equal(result$remote_ratio[2], 0)
+  expect_equal(result$remote_ratio[3], 100)
+  expect_true(is.na(result$remote_ratio[4]))
+  
+  # Test 2: Mode binaire avec seuil 50
+  df <- data.frame(remote_ratio = c("25", "50", "75", NA))
+  result <- normalize_remote_ratio(df, binary = TRUE)
+  expect_equal(result$remote_ratio[1], 0)
+  expect_equal(result$remote_ratio[2], 100)
+  expect_equal(result$remote_ratio[3], 100)
+  expect_true(is.na(result$remote_ratio[4]))
+})
+
 test_that("normalize_factor", {
   mapping_test <- c(
     "FT" = "Full-time",
