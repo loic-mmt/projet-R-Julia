@@ -1,5 +1,5 @@
 test_that("export_csv writes to given path with ; and default filename", {
-  df <- data.frame(x = 1:3, y = c("a","b","c"), stringsAsFactors = FALSE)
+  df <- data.frame(x = 1:3, y = c("a", "b", "c"), stringsAsFactors = FALSE)
   tmp <- tempfile("exports_"); dir.create(tmp)
   on.exit(unlink(tmp, recursive = TRUE, force = TRUE), add = TRUE)
 
@@ -18,8 +18,8 @@ test_that("export_csv supports comma separator and custom filename", {
   tmp <- tempfile("exports_"); dir.create(tmp)
   on.exit(unlink(tmp, recursive = TRUE, force = TRUE), add = TRUE)
 
-  fname <- "out.csv"
-  res <- export_csv(df, path = tmp, filename = fname, sep = ",", verbose = FALSE)
+  filename <- "out.csv"
+  res <- export_csv(df, path = tmp, filename = filename, sep = ",", verbose = FALSE)
 
   expect_true(file.exists(file.path(tmp, fname)))
   expect_equal(res, file.path(tmp, fname))
