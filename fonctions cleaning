@@ -21,12 +21,10 @@ Loïc- normalize_country_codes — Convertir pays en codes ISO cohérents (+ ré
 Margot- convert_currency_to_usd — Convertir salaires en USD et vérifier la cohérence.
 
 # Données manquantes
-Arthur- handle_missing — Gérer les NA (suppression ou imputation simple).
 Loïc- impute_missing — Imputer num/cat selon une méthode choisie.
 
 # Qualité des données & valeurs aberrantes
 Margot- validate_ranges — Vérifier contraintes (salary > 0, remote_ratio ∈ [0,100], années plausibles).
-Arthur- flag_outliers_salary — Détecter les valeurs aberrantes sur salary_in_usd.
 Loïc- cap_outliers_salary — Traiter les outliers (winsorisation/écrêtage).
 
 # Orchestration
