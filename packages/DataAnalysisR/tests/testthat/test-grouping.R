@@ -50,3 +50,14 @@ test_that("summarize_salary: validation errors", {
   # missing group column
   expect_error(summarize_salary(df, by = "unknown_group", verbose = FALSE), "regroupement introuvable")
 })
+
+
+testthat("association_table : liste contenant table, v, chi2, df, p.value", {
+  df <- data.frame(
+    work_year = c(2020, 2020, 2021, 2021),
+    company_location = c("US", "US", "US", "FR"),
+    salary_in_usd = c(100, 200, 1000, 2000),
+    stringsAsFactors = FALSE
+  )
+  out <- association_table(df, x = "work_year", y = "company_location", prop = "row")
+})
