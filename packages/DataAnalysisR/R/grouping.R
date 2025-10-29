@@ -42,3 +42,70 @@ summarize_salary <- function(x,
 
   out
 }
+
+
+#' association_table — Table croisée + Cramér's V pour deux catégorielles
+#'
+#' Construit un tableau de contingence entre deux colonnes catégorielles et
+#' calcule la force d'association via Cramér's V (borné dans \code{[0,1]}),
+#' ainsi que la statistique du \eqn{\chi^2} et sa p-valeur.
+#'
+#' @param data data.frame en entrée.
+#' @param x Nom de la première colonne catégorielle (character).
+#' @param y Nom de la seconde colonne catégorielle (character).
+#' @param include_na Inclure les NA comme modalité ? (FALSE par défaut).
+#' @param prop Choix des proportions à retourner : \code{"none"}, \code{"row"},
+#'   \code{"col"} ou \code{"total"}.
+#' @param simulate_p Utiliser une p-valeur simulée (Monte-Carlo) si le tableau est
+#'   clairsemé (FALSE par défaut).
+#' @param B Nombre de répétitions pour la p-valeur simulée (2000 par défaut).
+#'
+#' @return Une liste avec au minimum : \code{table}, \code{v}, \code{chi2},
+#'   \code{df}, \code{p.value}. Si \code{prop != "none"}, un élément \code{prop}
+#'   est ajouté (proportions par ligne/colonne/total).
+#' @export
+association_table <- function(data, x, y,
+                              include_na = FALSE,
+                              prop = c("none", "row", "col", "total"),
+                              simulate_p = FALSE,
+                              B = 2000) {
+
+  if (!is.data.frame(data)) stop("data doit être un data.frame")
+  if (!all(c(x, y) %in% names(data))) stop("Colonnes manquantes dans data")
+  prop <- match.arg(prop)
+
+  a <- data[[x]]
+  b <- data[[y]]
+  if (!include_na) {
+    ok <- !is.na(a) & !is.na(b)
+    a <- a[ok]; b <- b[ok]
+  }
+
+  tab <- if (include_na) table(a, b, useNA = "ifany") else table(a, b)
+  if (nrow(tab) < 2 || ncol(tab) < 2) {
+      stop("Cramér's V nécessite au moins un tableau 2x2.")
+    }
+
+  n <- sum(tab)
+  chi <- suppressWarnings(
+    chisq.test(tab, correct = FALSE, simulate.p.value = simulate_p, B = B)
+  )
+
+  chi2 <- as.numeric(chi$statistic)
+  r <- nrow(tab); c <- ncol(tab)
+  v <- sqrt(chi2 / (n * min(r - 1, c - 1)))
+
+  res <- list(
+    table   = tab,
+    v       = as.numeric(v),
+    chi2    = chi2,
+    df      = as.integer(chi$parameter),
+    p.value = as.numeric(chi$p.value)
+  )
+
+  if (prop == "row")   res$prop <- prop.table(tab, 1)
+  if (prop == "col")   res$prop <- prop.table(tab, 2)
+  if (prop == "total") res$prop <- prop.table(tab)
+
+  return(res)
+}
