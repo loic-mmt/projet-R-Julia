@@ -12,10 +12,15 @@ read_raw_csv <- function(file_path) {
 #'
 #' @param dataframe Dataframe to test
 #' @param required_colums vector with the required colums names to test in dataframe
+#' @param boollean_form Instruction if we want the outpout on a boolean form
 #' @return presence Indication to the user on the preence of the colums
 #' @export
-validate_schema <- function(dataframe, required_colums) {
-    not_commun <- required_colums[!required_colums %in% names(dataframe)]
+validate_schema <- function(dataframe, required_colums, boollean_form = FALSE) {
+  not_commun <- required_colums[!required_colums %in% names(dataframe)]
+  if (boolean_form) {
+    presence <- (length(not_commun) == 0)
+  }
+  else {
     presence <- ""
     if (length(not_commun) == 0) {
         presence <- "All required colums are present in the dataframe"
@@ -23,7 +28,8 @@ validate_schema <- function(dataframe, required_colums) {
     else {
         presence <- paste("The dataframe in not complete and it's missing", paste(not_commun, collapse = ", "))
     }
-    return(presence)
+  }
+  return(presence)
 }
 
 #' Convert strings to snake_case

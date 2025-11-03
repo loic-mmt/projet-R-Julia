@@ -17,7 +17,7 @@ test_that("normalize_remote_ratio works correctly", {
   expect_true(is.na(result$remote_ratio[4]))
 })
 
-test_that("normalize_factor", {
+test_that("normalize_factor works correctly", {
   mapping_test <- c(
     "FT" = "Full-time",
     "PT" = "Part-time",
