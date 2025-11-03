@@ -14,3 +14,8 @@ normalize_employment_type <- function(x) {
   )
   return(normalized)
 }
+
+git add .
+git commit -m "ajout fonction dans normalisation"
+git push origin main
+
