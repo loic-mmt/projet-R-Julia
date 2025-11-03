@@ -16,6 +16,6 @@ normalize_employment_type <- function(x) {
 }
 
 git add .
-git commit -m "ajout fonction dans normalisation"
+git commit -m "ajout fonction class S3 et tests dans Orchestration"
 git push origin main
 

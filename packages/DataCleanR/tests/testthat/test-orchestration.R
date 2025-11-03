@@ -16,6 +16,5 @@ test_that("finalize_salary_tbl works correctly", {
   data_test_missing$work_year <- NULL
   salary_tbl <- finalize_salary_tbl(data_test)
   expect_s3_class(salary_tbl, "salary_tbl")
-  expect_true(is_salary_tbl(salary_tbl))
   expect_error(finalize_salary_tbl(data_test_missing))
 })

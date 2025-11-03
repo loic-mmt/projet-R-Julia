@@ -3,7 +3,6 @@
 #' @param data a data frame containing salary data
 #' @return An object of class "salary_tbl"
 #' @export
-#' @examples
 finalize_salary_tbl <- function(data) {
   # Vérification des colonnes
   required_cols <- c("work_year", "experience_level", "employment_type", "job_title", 

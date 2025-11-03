@@ -3,6 +3,7 @@
 export(cap_outliers_salary)
 export(deduplicate_rows)
 export(enforce_types)
+export(finalize_salary_tbl)
 export(impute_missing)
 export(normalize_country_codes)
 export(normalize_factor)

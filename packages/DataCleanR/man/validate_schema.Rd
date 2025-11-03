@@ -4,12 +4,14 @@
 \alias{validate_schema}
 \title{Test the presence of required colums in a dataframe}
 \usage{
-validate_schema(dataframe, required_colums)
+validate_schema(dataframe, required_colums, boollean_form = FALSE)
 }
 \arguments{
 \item{dataframe}{Dataframe to test}
 
 \item{required_colums}{vector with the required colums names to test in dataframe}
+
+\item{boollean_form}{Instruction if we want the outpout on a boolean form}
 }
 \value{
 presence Indication to the user on the preence of the colums
