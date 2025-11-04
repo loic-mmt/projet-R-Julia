@@ -21,14 +21,13 @@ variance_homogeneity_test <- function(data,
   if (na.rm) d <- d[stats::complete.cases(d), , drop = FALSE]
   x <- d[[y]]
   g <- as.factor(d[[group]])
-
   if (method == "bartlett") {
-    return(stats::bartlett.test(x ~ g))
+    mth_grp <- stats::bartlett.test(x ~ g)
   } else {
 
     med <- tapply(x, g, stats::median)
-    z <- abs(x - med[g])
-
-    return(stats::anova(stats::lm(z ~ g)))
+    x <- abs(x - med[g])
+    mth_grp <- stats::anova(stats::lm(x ~ g))
   }
+  return(mth_grp)
 }
