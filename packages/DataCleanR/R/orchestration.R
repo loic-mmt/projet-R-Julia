@@ -35,25 +35,20 @@ cleaning_pipeline <- function(data, min_year = 2000, max_year = as.integer(forma
 
   # Étape 2 : Standardiser les noms de colonnes
   if (verbose) message("\n[2/13] Standardisation des noms de colonnes...")
-  data <- DataCleanR::to_snake_case(data)
+  data <- DataCleanR::standardize_colnames(data)
   if (verbose) message("  -> Colonnes standardisées")
 
-  # Étape 3 : Nettoyer les espaces
-  if (verbose) message("\n[3/13] Nettoyage des espaces parasites...")
-  data <- DataCleanR::trim_whitespace(data)
-  if (verbose) message("  -> Espaces nettoyés")
-
-  # Étape 4 : Appliquer les types
+  # Étape 3 : Appliquer les types
   if (verbose) message("\n[4/13] Application des types de données...")
   data <- DataCleanR::enforce_types(data)
   if (verbose) message("  -> Types appliqués")
 
-  # Étape 5 : Supprimer les doublons
+  # Étape 4 : Supprimer les doublons
   if (verbose) message("\n[5/13] Suppression des doublons...")
   data <- DataCleanR::deduplicate_rows(data)
   if (verbose) message(sprintf("  -> Lignes restantes : %d", nrow(data)))
 
-  # Étapes 6 à 10 : Normalisations
+  # Étapes 5 à 9 : Normalisations
   if (verbose) message("\n[6/13] Normalisation des niveaux d'expérience...")
   data <- DataCleanR::normalize_experience_level(data)
   if (verbose) message("  -> Normalisé")
@@ -74,17 +69,17 @@ cleaning_pipeline <- function(data, min_year = 2000, max_year = as.integer(forma
   data <- DataCleanR::normalize_job_title(data)
   if (verbose) message("  -> Normalisé")
 
-  # Étape 11 : Normaliser les codes pays
+  # Étape 10 : Normaliser les codes pays
   if (verbose) message("\n[11/13] Normalisation des codes pays...")
   data <- DataCleanR::normalize_country_codes(data)
   if (verbose) message("  -> Normalisé")
 
-  # Étape 12 : Valider les plages
+  # Étape 11 : Valider les plages
   if (verbose) message("\n[12/13] Validation des plages de valeurs...")
   data <- DataCleanR::validate_ranges(data, min_year = min_year, max_year = max_year)
   if (verbose) message(sprintf("  -> Lignes restantes : %d", nrow(data)))
 
-  # Étape 13 : Conversion des devises en USD
+  # Étape 12 : Conversion des devises en USD
   if (verbose) message("\n[13/13] Conversion des devises en USD...")
   data <- DataCleanR::convert_currency_to_usd(data)
   if (verbose) message("  -> Conversion terminée")
