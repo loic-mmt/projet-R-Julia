@@ -4,11 +4,12 @@ names(data) <- DataCleanR::to_snake_case(names(data))
 head(data)
 
 
-
-
-
-res <- association_table(data, x = "company_location", y = "employment_type", prop = "row")
-res$table       # effectifs
-res$prop        # % par ligne (si demandé)
-res$v           # Cramér's V
-res$p.value     # p-value du test du χ²
+effect_size_salary <- function(data,
+                                      y,
+                                      group,
+                                      method = c("levene", "bartlett"),
+                                      na.rm = TRUE) {
+  df <- data.frame(company_location = c("US", "US", "US", "FR"),
+                   salary_in_usd = c(100, 200, 1000, 2000),
+                   stringsAsFactors = FALSE)
+}

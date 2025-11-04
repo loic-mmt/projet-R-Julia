@@ -6,7 +6,6 @@ load_raw_csv — Lire le CSV brut et retourner un tibble. OK
 Arthur- validate_schema — Vérifier la présence des colonnes nécessaires. 
 Loïc- standardize_colnames — Uniformiser les noms de colonnes en snake_case.
 Margot- enforce_types — Convertir les colonnes aux bons types (numériques, facteurs, etc.).
-Arthur- trim_whitespace — Supprimer les espaces parasites dans les colonnes texte.
 Loïc- deduplicate_rows — Supprimer les doublons selon des clés.
 
 # Normalisation (valeurs & référentiels)
