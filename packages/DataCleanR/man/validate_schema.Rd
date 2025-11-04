@@ -4,7 +4,7 @@
 \alias{validate_schema}
 \title{Test the presence of required colums in a dataframe}
 \usage{
-validate_schema(dataframe, required_colums, boollean_form = FALSE)
+validate_schema(dataframe, required_colums, boolean_form = FALSE)
 }
 \arguments{
 \item{dataframe}{Dataframe to test}
