@@ -68,7 +68,7 @@ describe_overview.character <- function(char) {
 
 #' Méthode par défaut
 #'
-#' @param x N'importe quel objet ne rentrant pas dans les class implémentées
+#' @param x N'importe quel objet ne rentrant pas dans les classes implémentées
 #' @export
 describe_overview.default <- function(x) {
   stop("describe_overview n'est pas implémenté pour: ", class(x))

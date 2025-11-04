@@ -56,8 +56,8 @@ summarize_salary <- function(x,
 #' @param include_na Inclure les NA comme modalité ? (FALSE par défaut).
 #' @param prop Choix des proportions à retourner : \code{"none"}, \code{"row"},
 #'   \code{"col"} ou \code{"total"}.
-#' @param simulate_p Utiliser une p-valeur simulée (Monte-Carlo) si le tableau est
-#'   clairsemé (FALSE par défaut).
+#' @param simulate_p Utiliser une p-valeur simulée (Monte-Carlo) si le tableau
+#' est clairsemé (FALSE par défaut).
 #' @param B Nombre de répétitions pour la p-valeur simulée (2000 par défaut).
 #'
 #' @return Une liste avec au minimum : \code{table}, \code{v}, \code{chi2},
