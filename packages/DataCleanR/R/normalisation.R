@@ -1,24 +1,24 @@
-#' Normalize the experience level column
+#' Normalize an ordered factor column
 #'
-#' @param data data.frame A data frame containing an 'experience_level' column
-#' @return data.frame The same data frame with 'experience_level' converted to an ordered factor
+#' @param data data.frame A data frame containing the column to normalize
+#' @param column_name character Name of the column to normalize
+#' @param levels_ordered character Vector of levels in the desired order
+#' @return data.frame The same data frame with the specified column converted to an ordered factor
 #' @export
-normalize_experience_level <- function(data) {
+normalize_experience_level <- function(data, column_name, levels_ordered) {
   # Vérifier que la colonne existe
-  if (!"experience_level" %in% names(data)) {
-    stop("La colonne 'experience_level' n'existe pas dans le dataframe.")
+  if (!column_name %in% names(data)) {
+    stop(sprintf("La colonne '%s' n'existe pas dans le dataframe.", column_name))
   }
 
-  # Définir les niveaux dans l'ordre : EN < MI < SE < EX
-  levels_ordered <- c("EN", "MI", "SE", "EX")
-
   # Convertir en facteur ordonné
-  data$experience_level <- factor(data$experience_level,
-                                  levels = levels_ordered,
-                                  ordered = TRUE)
+  data[[column_name]] <- factor(data[[column_name]],
+                                levels = levels_ordered,
+                                ordered = TRUE)
 
   return(data)
 }
+
 
 #' Normalize a vector to a factor. (use with "df$col <- normalize_to_factor(df$col, mapping, levels)")
 #'
