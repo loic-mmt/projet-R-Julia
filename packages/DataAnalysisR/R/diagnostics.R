@@ -43,7 +43,7 @@ describe_overview.factor <- function(fact) {
   frequences <- table(fact)
   list(
     taille = length(fact),
-    nb_niveaux = nlevels(fact),
+    nb_groupes = nlevels(fact),
     levels = levels(fact),
     frequences = frequences,
     plus_frequent = names(which.max(frequences)),
@@ -59,7 +59,7 @@ describe_overview.character <- function(char) {
   frequences <- table(char)
   list(
     taille = length(char),
-    nb_unique = length(unique(char)),
+    nb_groupes = length(unique(char)),
     frequences = frequences,
     plus_frequent = names(which.max(frequences)),
     moins_frequent = names(which.min(frequences))

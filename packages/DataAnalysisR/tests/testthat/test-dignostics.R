@@ -38,7 +38,7 @@ test_that("describe_overview.factor works correctly", {
   expect_named(result, c("taille", "nb_niveaux", "levels", "frequences", 
                         "plus_frequent", "moins_frequent"))
   expect_equal(result$taille, 6)
-  expect_equal(result$nb_niveaux, 3)
+  expect_equal(result$nb_groupes, 3)
   expect_equal(result$levels, c("A", "B", "C"))
   expect_equal(result$frequences, table(fact))
   expect_equal(result$plus_frequent, "B")
@@ -54,7 +54,7 @@ test_that("describe_overview.character works correctly", {
   expect_named(result, c("taille", "nb_unique", "frequences", 
                         "plus_frequent", "moins_frequent"))
   expect_equal(result$taille, 6)
-  expect_equal(result$nb_unique, 3)
+  expect_equal(result$nb_groupes, 3)
   expect_equal(result$plus_frequent, "non")
   expect_equal(result$moins_frequent, "peut-être")
 })
