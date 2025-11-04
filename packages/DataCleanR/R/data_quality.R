@@ -1,4 +1,4 @@
-
+#' @title Valider les plages de valeurs
 #' @description Vérifie que les données respectent les contraintes de plage (salary > 0, remote_ratio entre 0 et 100, années plausibles)
 #' @param data Data frame contenant les colonnes à valider
 #' @param min_year Année minimale acceptable (par défaut 2000)

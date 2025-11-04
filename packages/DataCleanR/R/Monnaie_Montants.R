@@ -1,9 +1,8 @@
-
+#' @title Convertir les salaires en USD
 #' @description Convertit les salaires de différentes devises en USD en utilisant des taux de change historiques annuels
 #' @param data Data frame contenant les colonnes salary, salary_currency, salary_in_usd et work_year
 #' @return Data frame avec les salaires convertis en USD
 #' @export
-#' @examples
 convert_currency_to_usd <- function(data) {
   if (!all(c("salary", "salary_currency", "salary_in_usd", "work_year") %in% names(data))) {
     stop("Les colonnes 'salary', 'salary_currency', 'salary_in_usd' et 'work_year' doivent exister.")
