@@ -36,7 +36,7 @@ validate_schema <- function(dataframe, required_columns, boolean_form = FALSE) {
 #' @param data character Vector of strings to convert.
 #' @return character Vector in snake_case.
 #' @export
-to_snake_case <- function(data) {
+standardize_colnames <- function(data) {
   data <- gsub("[^A-Za-z0-9]+", "_", data)
   data <- gsub("([a-z0-9])([A-Z])", "\\1_\\2", data)
   data <- tolower(data)

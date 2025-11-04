@@ -16,11 +16,11 @@ test_that("validate_schema", {
   expect_equal(list(test1, test2), list("All required columns are present in the dataframe", "The dataframe in not complete and it's missing c"))
 })
 
-test_that("to_snake_case", {
+test_that("standardize_colnames", {
   df <- data.frame("Nom Client" = c("Alice", "Bob"),
                    "MontantTotal" = c(100, 200),
                    "Date-De-Vente" = c("2024-01-01", "2024-01-02"))
-  names(df) <- to_snake_case(names(df))
+  names(df) <- standardize_colnames(names(df))
   expect_equal(names(df), c("nom_client", "montant_total", "date_de_vente"))
 })
 
