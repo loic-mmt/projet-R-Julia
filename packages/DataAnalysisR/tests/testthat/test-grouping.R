@@ -52,7 +52,7 @@ test_that("summarize_salary: validation errors", {
 })
 
 
-testthat("association_table : liste contenant table, v, chi2, df, p.value", {
+test_that("association_table : liste contenant table, v, chi2, df, p.value", {
   df <- data.frame(
     work_year = c(2020, 2020, 2021, 2021),
     company_location = c("US", "US", "US", "FR"),
