@@ -24,69 +24,69 @@ cleaning_pipeline <- function(data, min_year = 2000, max_year = as.integer(forma
   # Étape 1 : Validation du schéma
   if (verbose) message("\n[1/13] Validation du schéma...")
 
-  schema_validation <- validate_schema(data, required_columns = CORE_COLUMNS, boolean_form = TRUE)
+  schema_validation <- DataCleanR::validate_schema(data, required_columns = CORE_COLUMNS, boolean_form = TRUE)
 
   if (!schema_validation) {
-    error_msg <- validate_schema(data, required_columns = CORE_COLUMNS, boolean_form = FALSE)
+    error_msg <- DataCleanR::validate_schema(data, required_columns = CORE_COLUMNS, boolean_form = FALSE)
     stop(error_msg)
   }
 
-  if (verbose) message(sprintf("  -> Schéma validé : %s", validate_schema(data, required_columns = CORE_COLUMNS)))
+  if (verbose) message(sprintf("  -> Schéma validé : %s", DataCleanR::validate_schema(data, required_columns = CORE_COLUMNS)))
 
   # Étape 2 : Standardiser les noms de colonnes
   if (verbose) message("\n[2/13] Standardisation des noms de colonnes...")
-  data <- standardize_colnames(data)
+  data <- DataCleanR::standardize_colnames(data)
   if (verbose) message("  -> Colonnes standardisées")
 
   # Étape 3 : Nettoyer les espaces
   if (verbose) message("\n[3/13] Nettoyage des espaces parasites...")
-  data <- trim_whitespace(data)
+  data <- DataCleanR::trim_whitespace(data)
   if (verbose) message("  -> Espaces nettoyés")
 
   # Étape 4 : Appliquer les types
   if (verbose) message("\n[4/13] Application des types de données...")
-  data <- enforce_types(data)
+  data <- DataCleanR::enforce_types(data)
   if (verbose) message("  -> Types appliqués")
 
   # Étape 5 : Supprimer les doublons
   if (verbose) message("\n[5/13] Suppression des doublons...")
-  data <- deduplicate_rows(data)
+  data <- DataCleanR::deduplicate_rows(data)
   if (verbose) message(sprintf("  -> Lignes restantes : %d", nrow(data)))
 
   # Étapes 6 à 10 : Normalisations
   if (verbose) message("\n[6/13] Normalisation des niveaux d'expérience...")
-  data <- normalize_experience_level(data)
+  data <- DataCleanR::normalize_experience_level(data)
   if (verbose) message("  -> Normalisé")
 
   if (verbose) message("\n[7/13] Normalisation des types d'emploi...")
-  data <- normalize_employment_type(data)
+  data <- DataCleanR::normalize_employment_type(data)
   if (verbose) message("  -> Normalisé")
 
   if (verbose) message("\n[8/13] Normalisation de la taille d'entreprise...")
-  data <- normalize_company_size(data)
+  data <- DataCleanR::normalize_company_size(data)
   if (verbose) message("  -> Normalisé")
 
   if (verbose) message("\n[9/13] Normalisation du ratio remote...")
-  data <- normalize_remote_ratio(data)
+  data <- DataCleanR::normalize_remote_ratio(data)
   if (verbose) message("  -> Normalisé")
 
   if (verbose) message("\n[10/13] Normalisation des titres de poste...")
-  data <- normalize_job_title(data)
+  data <- DataCleanR::normalize_job_title(data)
   if (verbose) message("  -> Normalisé")
 
   # Étape 11 : Normaliser les codes pays
   if (verbose) message("\n[11/13] Normalisation des codes pays...")
-  data <- normalize_country_codes(data)
+  data <- DataCleanR::normalize_country_codes(data)
   if (verbose) message("  -> Normalisé")
 
   # Étape 12 : Valider les plages
   if (verbose) message("\n[12/13] Validation des plages de valeurs...")
-  data <- validate_ranges(data, min_year = min_year, max_year = max_year)
+  data <- DataCleanR::validate_ranges(data, min_year = min_year, max_year = max_year)
   if (verbose) message(sprintf("  -> Lignes restantes : %d", nrow(data)))
 
   # Étape 13 : Conversion des devises en USD
   if (verbose) message("\n[13/13] Conversion des devises en USD...")
-  data <- convert_currency_to_usd(data)
+  data <- DataCleanR::convert_currency_to_usd(data)
   if (verbose) message("  -> Conversion terminée")
 
   final_rows <- nrow(data)
