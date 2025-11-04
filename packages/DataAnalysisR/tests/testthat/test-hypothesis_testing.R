@@ -14,3 +14,19 @@ test_that("variance_homogeneity_test - levene works", {
     expect_true(is.numeric(p) && !is.na(p))
     expect_gt(p, 0.05)
 })
+
+test_that("variance_homogeneity_test - bartlett works", {
+  df <- data.frame(
+    group = c(rep("A", 6), rep("B", 6), rep("C", 6)),
+    salary_in_usd = c(
+      1, 2, 3, 4, 5, 6,
+      10, 10, 10, 10, 10.1, 9.9,
+      1, 1, 1, 1, 1, 21
+    ),
+    stringsAsFactors = FALSE
+  )
+
+  res <- variance_homogeneity_test(df, y = "salary_in_usd", group = "group", method = "bartlett")
+  expect_s3_class(res, "htest")
+  expect_lt(res$p.value, 0.05)
+})
