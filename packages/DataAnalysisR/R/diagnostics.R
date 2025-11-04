@@ -13,9 +13,9 @@ describe_overview.integer <- function(vect) {
     taille = length(vect),
     moyenne = mean(vect),
     mediane = median(vect),
-    nb_groupes = length(unique(vect))
-    minimum = min(vect)
-    maximum = max(vect)
+    nb_groupes = length(unique(vect)),
+    minimum = min(vect),
+    maximum = max(vect),
     quantiles = quantile(vect)
   )
 }
@@ -29,9 +29,9 @@ describe_overview.numeric <- function(vect) {
     taille = length(vect),
     moyenne = mean(vect),
     mediane = median(vect),
-    nb_groupes = length(unique(vect))
-    minimum = min(vect)
-    maximum = max(vect)
+    nb_groupes = length(unique(vect)),
+    minimum = min(vect),
+    maximum = max(vect),
     quantiles = quantile(vect)
   )
 }
