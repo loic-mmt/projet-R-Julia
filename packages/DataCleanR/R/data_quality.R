@@ -1,3 +1,44 @@
+
+#' @description Vérifie que les données respectent les contraintes de plage (salary > 0, remote_ratio entre 0 et 100, années plausibles)
+#' @param data Data frame contenant les colonnes à valider
+#' @param min_year Année minimale acceptable (par défaut 2000)
+#' @param max_year Année maximale acceptable (par défaut année courante)
+#' @return Data frame filtré contenant uniquement les lignes valides
+#' @export
+
+validate_ranges <- function(data, min_year = 2000, max_year = as.integer(format(Sys.Date(), "%Y"))) {
+  if (!all(c("salary", "remote_ratio", "work_year") %in% names(data))) {
+    stop("Les colonnes 'salary', 'remote_ratio' et 'work_year' doivent exister.")
+  }
+  
+  data$salary <- as.numeric(data$salary)
+  data$remote_ratio <- as.numeric(data$remote_ratio)
+  data$work_year <- as.integer(data$work_year)
+  
+  initial_rows <- nrow(data)
+  
+  # Filtrer les lignes valides
+  valid_data <- data[
+    data$salary > 0 &
+      data$remote_ratio >= 0 &
+      data$remote_ratio <= 100 &
+      data$work_year >= min_year &
+      data$work_year <= max_year &
+      !is.na(data$salary) &
+      !is.na(data$remote_ratio) &
+      !is.na(data$work_year),
+  ]
+  
+  removed_rows <- initial_rows - nrow(valid_data)
+  
+  if (removed_rows > 0) {
+    message(sprintf("%d ligne(s) supprimée(s) car hors des plages valides.", removed_rows))
+  }
+  
+  return(valid_data)
+}
+
+
 #' Cap salary outliers (quantile)
 #'
 #' Winsorise une colonne numérique en plafonnant par quantiles.
