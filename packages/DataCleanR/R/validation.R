@@ -23,7 +23,7 @@ validate_schema <- function(dataframe, required_columns, boolean_form = FALSE) {
   else {
     presence <- ""
     if (length(not_commun) == 0) {
-        presence <- "All required colums are present in the dataframe"
+        presence <- "All required columns are present in the dataframe"
     }
     else {
         presence <- paste("The dataframe in not complete and it's missing", paste(not_commun, collapse = ", "))

@@ -13,7 +13,7 @@ test_that("validate_schema", {
   names_to_test2 <- c("a", "b", "c")
   test1 <- validate_schema(df, names_to_test1)
   test2 <- validate_schema(df, names_to_test2)
-  expect_equal(list(test1, test2), list("All required colums are present in the dataframe", "The dataframe in not complete and it's missing c"))
+  expect_equal(list(test1, test2), list("All required columns are present in the dataframe", "The dataframe in not complete and it's missing c"))
 })
 
 test_that("to_snake_case", {
