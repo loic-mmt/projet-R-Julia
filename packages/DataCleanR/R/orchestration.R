@@ -43,10 +43,11 @@ cleaning_pipeline <- function(data, min_year = 2000, max_year = as.integer(forma
   data <- DataCleanR::enforce_types(data)
   if (verbose) message("  -> Types appliqués")
 
-  # Étape 4 : Supprimer les doublons
-  if (verbose) message("\n[5/13] Suppression des doublons...")
-  data <- DataCleanR::deduplicate_rows(data)
-  if (verbose) message(sprintf("  -> Lignes restantes : %d", nrow(data)))
+ # Étape 4 : Supprimer les doublons
+if (verbose) message("\n[5/13] Suppression des doublons...")
+data <- as.data.frame(data)
+data <- DataCleanR::deduplicate_rows(data)
+if (verbose) message(sprintf("  -> Lignes restantes : %d", nrow(data)))
 
   # Étapes 5 à 9 : Normalisations
   if (verbose) message("\n[6/13] Normalisation des niveaux d'expérience...")
