@@ -1,6 +1,28 @@
+#' Normalize an ordered factor column
+#'
+#' @param data data.frame A data frame containing the column to normalize
+#' @param column_name character Name of the column to normalize
+#' @param levels_ordered character Vector of levels in the desired order
+#' @return data.frame The same data frame with the specified column converted to an ordered factor
+#' @export
+normalize_experience_level <- function(data, column_name, levels_ordered) {
+  # Vérifier que la colonne existe
+  if (!column_name %in% names(data)) {
+    stop(sprintf("La colonne '%s' n'existe pas dans le dataframe.", column_name))
+  }
+
+  # Convertir en facteur ordonné
+  data[[column_name]] <- factor(data[[column_name]],
+                                levels = levels_ordered,
+                                ordered = TRUE)
+
+  return(data)
+}
+
+
 #' Normalize a vector to a factor. (use with "df$col <- normalize_to_factor(df$col, mapping, levels)")
 #'
-#' @param vector the vector to normalize 
+#' @param vector the vector to normalize
 #' @param mapping the mapping to indicate which values to transform in which.
 #' @param levels_in_factor les niveaux à indiquer
 #' @param ordered_factor Indicate if the vector has to be ordonned, FALSE by default
@@ -14,7 +36,7 @@ normalize_factor <- function(vector, mapping, levels_in_factor, ordered_factor =
 }
 
 #' titre
-#' 
+#'
 #' @param data data.frame contenant la colonne `remote_ratio`
 #' @param binary logique, si TRUE convertit en 0/100 (par défaut FALSE)
 #' @param threshold seuil pour le binaire (défaut 50)
@@ -168,25 +190,25 @@ normalize_country_codes <- function(data,
 
 #' @export
 levels_job_title <- c(
-    "Analyst", 
-    "Data Engineer", 
-    "Data Scientist", 
-    "ML Engineer", 
-    "Research", 
+    "Analyst",
+    "Data Engineer",
+    "Data Scientist",
+    "ML Engineer",
+    "Research",
     "Architecture",
-    "Management", 
-    "Consulting", 
+    "Management",
+    "Consulting",
     "BI Developer",
-    "AI Developer", 
-    "Senior", 
-    "Specialist", 
+    "AI Developer",
+    "Senior",
+    "Specialist",
     "Operations")
 
 #' @export
 mapping_job_title <- c(
   # Data Analysis & BI
   "Data Analyst" = "Analyst",
-  "Business Data Analyst" = "Analyst", 
+  "Business Data Analyst" = "Analyst",
   "BI Data Analyst" = "Analyst",
   "Product Data Analyst" = "Analyst",
   "Marketing Data Analyst" = "Analyst",
@@ -197,7 +219,7 @@ mapping_job_title <- c(
   "Insight Analyst" = "Analyst",
   "BI Analyst" = "Analyst",
   "Data Operations Analyst" = "Analyst",
-  
+
   # Data Engineering
   "Data Engineer" = "Data Engineer",
   "Big Data Engineer" = "Data Engineer",
@@ -215,7 +237,7 @@ mapping_job_title <- c(
   "Data DevOps Engineer" = "Data Engineer",
   "Cloud Database Engineer" = "Data Engineer",
   "Analytics Engineer" = "Data Engineer",
-  
+
   # Data Science & ML
   "Data Scientist" = "Data Scientist",
   "Applied Data Scientist" = "Data Scientist",
@@ -223,10 +245,10 @@ mapping_job_title <- c(
   "Machine Learning Scientist" = "Data Scientist",
   "Applied Machine Learning Scientist" = "Data Scientist",
   "AI Scientist" = "Data Scientist",
-  
+
   # Machine Learning Engineering
   "Machine Learning Engineer" = "ML Engineer",
-  "ML Engineer" = "ML Engineer", 
+  "ML Engineer" = "ML Engineer",
   "Computer Vision Engineer" = "ML Engineer",
   "Machine Learning Developer" = "ML Engineer",
   "Machine Learning Research Engineer" = "ML Engineer",
@@ -236,7 +258,7 @@ mapping_job_title <- c(
   "Applied Machine Learning Engineer" = "ML Engineer",
   "Machine Learning Software Engineer" = "ML Engineer",
   "MLOps Engineer" = "ML Engineer",
-  
+
   # Research & Advanced
   "Research Scientist" = "Research",
   "Research Engineer" = "Research",
@@ -244,18 +266,18 @@ mapping_job_title <- c(
   "3D Computer Vision Researcher" = "Research",
   "Deep Learning Researcher" = "Research",
   "Applied Scientist" = "Research",
-  
+
   # Architecture & Specialized
   "Data Architect" = "Architecture",
-  "Big Data Architect" = "Architecture", 
+  "Big Data Architect" = "Architecture",
   "Cloud Data Architect" = "Architecture",
   "Data Modeler" = "Architecture",
   "Principal Data Architect" = "Architecture",
-  
+
   # Management & Leadership
   "Director of Data Science" = "Management",
   "Data Science Manager" = "Management",
-  "Machine Learning Manager" = "Management", 
+  "Machine Learning Manager" = "Management",
   "Head of Data Science" = "Management",
   "Head of Data" = "Management",
   "Head of Machine Learning" = "Management",
@@ -265,24 +287,24 @@ mapping_job_title <- c(
   "Data Manager" = "Management",
   "Manager Data Management" = "Management",
   "Data Lead" = "Management",
-  
+
   # Consulting & Strategy
   "Data Science Consultant" = "Consulting",
-  "Data Analytics Consultant" = "Consulting", 
+  "Data Analytics Consultant" = "Consulting",
   "Data Strategist" = "Consulting",
-  
+
   # BI Development
   "Power BI Developer" = "BI Developer",
   "BI Developer" = "BI Developer",
   "Business Intelligence Engineer" = "BI Developer",
-  
+
   # AI Development
   "AI Developer" = "AI Developer",
   "AI Programmer" = "AI Developer",
-  
+
   # Senior/Staff Roles
   "Staff Data Analyst" = "Senior",
-  "Lead Data Analyst" = "Senior", 
+  "Lead Data Analyst" = "Senior",
   "Lead Data Engineer" = "Senior",
   "Lead Data Scientist" = "Senior",
   "Lead Machine Learning Engineer" = "Senior",
@@ -293,10 +315,10 @@ mapping_job_title <- c(
   "Principal Machine Learning Engineer" = "Senior",
   "Data Science Tech Lead" = "Senior",
   "Data Analytics Lead" = "Senior",
-  
+
   # Specialized & Other
   "Data Specialist" = "Specialist",
-  "Data Analytics Specialist" = "Specialist", 
+  "Data Analytics Specialist" = "Specialist",
   "Data Management Specialist" = "Specialist",
   "Autonomous Vehicle Technician" = "Specialist",
   "Data Operations Engineer" = "Operations")
