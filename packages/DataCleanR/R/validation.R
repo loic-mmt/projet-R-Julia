@@ -15,8 +15,8 @@ read_raw_csv <- function(file_path) {
 #' @param boollean_form Instruction if we want the outpout on a boolean form
 #' @return presence Indication to the user on the preence of the colums
 #' @export
-validate_schema <- function(dataframe, required_colums, boolean_form = FALSE) {
-  not_commun <- required_colums[!required_colums %in% names(dataframe)]
+validate_schema <- function(dataframe, required_columns, boolean_form = FALSE) {
+  not_commun <- required_columns[!required_columns %in% names(dataframe)]
   if (boolean_form) {
     presence <- (length(not_commun) == 0)
   }
