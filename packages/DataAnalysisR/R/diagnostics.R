@@ -40,11 +40,12 @@ describe_overview.numeric <- function(vect) {
 #' @param fact un facteur
 #' @export
 describe_overview.factor <- function(fact) {
+  frequences <- table(fact)
   list(
     taille = length(fact),
     nb_niveaux = nlevels(fact),
     levels = levels(fact),
-    frequences = table(fact),
+    frequences = frequences,
     plus_frequent = names(which.max(frequences)),
     moins_frequent = names(which.min(frequences))
   )
@@ -55,10 +56,11 @@ describe_overview.factor <- function(fact) {
 #' @param char un vecteur character
 #' @export
 describe_overview.character <- function(char) {
+  frequences <- table(char)
   list(
     taille = length(char),
     nb_unique = length(unique(char)),
-    frequences = table(char),
+    frequences = frequences,
     plus_frequent = names(which.max(frequences)),
     moins_frequent = names(which.min(frequences))
   )
