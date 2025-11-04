@@ -1,5 +1,14 @@
+test_that("normalize_experience_level works", {
+  df <- data.frame(experience_level = c("MI", "SE", "EN", "EX", "MI"), stringsAsFactors = FALSE)
+  res <- normalize_experience_level(df)
+
+  expect_s3_class(res$experience_level, "ordered")
+  expect_equal(levels(res$experience_level), c("EN", "MI", "SE", "EX"))
+  expect_equal(as.character(res$experience_level), c("MI", "SE", "EN", "EX", "MI"))
+})
+
 test_that("normalize_remote_ratio works correctly", {
-  
+
   # Test 1: Conversion et bornes
   df <- data.frame(remote_ratio = c("50", "-10", "150", "abc"))
   result <- normalize_remote_ratio(df)
@@ -7,7 +16,7 @@ test_that("normalize_remote_ratio works correctly", {
   expect_equal(result$remote_ratio[2], 0)
   expect_equal(result$remote_ratio[3], 100)
   expect_true(is.na(result$remote_ratio[4]))
-  
+
   # Test 2: Mode binaire avec seuil 50
   df <- data.frame(remote_ratio = c("25", "50", "75", NA))
   result <- normalize_remote_ratio(df, binary = TRUE)
