@@ -1,5 +1,7 @@
-#' @param data
-#' @return
+#' Normalize the experience level column
+#'
+#' @param data data.frame A data frame containing an 'experience_level' column
+#' @return data.frame The same data frame with 'experience_level' converted to an ordered factor
 #' @export
 normalize_experience_level <- function(data) {
   # Vérifier que la colonne existe
