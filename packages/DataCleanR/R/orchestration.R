@@ -1,4 +1,7 @@
-#' Apply a complete data cleaning and preprocessing pipeline.
+#' @title Apply a complete data cleaning and preprocessing pipeline.
+#'
+#' @description This function executes a full sequence of steps to clean,
+#' validate, and preprocess the input data frame, preparing it for analysis.
 #'
 #' @param data data.frame The input data frame to be cleaned.
 #' @param min_year integer The minimum valid year for the 'work_year' column (default is 2000).
