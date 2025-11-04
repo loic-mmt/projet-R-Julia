@@ -35,7 +35,7 @@ cleaning_pipeline <- function(data, min_year = 2000, max_year = as.integer(forma
 
   # Étape 2 : Standardiser les noms de colonnes
   if (verbose) message("\n[2/13] Standardisation des noms de colonnes...")
-  data <- DataCleanR::standardize_colnames(data)
+  data <- DataCleanR::to_snake_case(data)
   if (verbose) message("  -> Colonnes standardisées")
 
   # Étape 3 : Nettoyer les espaces
