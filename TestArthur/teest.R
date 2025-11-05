@@ -1,6 +1,6 @@
 cleaning_pipeline <- function(data, min_year = 2000, max_year = as.integer(format(Sys.Date(), "%Y")), verbose = TRUE) {
 
-  if (verbose) message("=== Début du pipeline de nettoyage ===")
+  if (verbose) message("Début du pipeline de nettoyage")
   initial_rows <- nrow(data)
   if (verbose) message(sprintf("Nombre de lignes initial : %d", initial_rows))
 
