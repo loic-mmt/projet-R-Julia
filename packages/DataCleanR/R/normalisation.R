@@ -322,3 +322,14 @@ mapping_job_title <- c(
   "Data Management Specialist" = "Specialist",
   "Autonomous Vehicle Technician" = "Specialist",
   "Data Operations Engineer" = "Operations")
+
+#'@export
+mapping_employement_type <- c(
+    "FT" = "Full-time",
+    "PT" = "Part-time",
+    "CT" = "Contract",
+    "FL" = "Freelance"
+  )
+
+#'@export
+levels_employement_type = c("Full-time", "Part-time", "Contract", "Freelance", "Unknown")
