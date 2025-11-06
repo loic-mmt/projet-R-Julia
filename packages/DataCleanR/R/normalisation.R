@@ -180,7 +180,7 @@ mapping_employement_type <- c(
   )
 
 #'@export
-levels_employement_type = c("Full-time", "Part-time", "Contract", "Freelance", "Unknown")
+levels_employement_type <- c("Full-time", "Part-time", "Contract", "Freelance", "Unknown")
 
 #'@export
 region_map <- c(
@@ -320,11 +320,11 @@ experience_labels_ordered <- c("Entry-level", "Mid-level", "Senior-level", "Exec
 #' @export
 normalize_all <- function(data) {
   #Normalize company location and creation of a regionnal grouping.
-  data$company_location <- DataCleanR::normalize_factor(data$company_location, mapping_total, levels_iso2)
-  data$company_grouping <- DataCleanR::normalize_factor(data$company_location, region_map, regions_levels)
+  data$company_location <- normalize_factor(data$company_location, mapping_total, levels_iso2)
+  data$company_grouping <- normalize_factor(data$company_location, region_map, regions_levels)
   #Normalize employee residence and creation of a regionnal grouping.
-  data$employee_residence <- DataCleanR::normalize_factor(data$employee_residence, mapping_total, levels_iso2)
-  data$employee_grouping <- DataCleanR::normalize_factor(data$employee_residence, region_map, regions_levels)
+  data$employee_residence <- normalize_factor(data$employee_residence, mapping_total, levels_iso2)
+  data$employee_grouping <- normalize_factor(data$employee_residence, region_map, regions_levels)
   #Normalize job titles
   data$job_title <- normalize_factor(data$job_title, mapping_job_title, levels_job_title)
   #Normalize remote ratios

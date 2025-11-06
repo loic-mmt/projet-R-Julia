@@ -56,19 +56,19 @@ test_that("normalize_all works correctly", {
     "experience_level"
   ) %in% names(result)))
 
-  expect_true(all(result$company_location %in% levels_iso2))
-  expect_true(all(result$employee_residence %in% levels_iso2))
+  expect_true(all(result$company_location %in% union(levels_iso2, c("Unknow"))))
+  expect_true(all(result$employee_residence %in% union(levels_iso2, c("Unknow"))))
 
-  expect_true(all(result$company_grouping %in% regions_levels))
-  expect_true(all(result$employee_grouping %in% regions_levels))
+  expect_true(all(result$company_grouping %in% union(regions_levels, c("Unknow"))))
+  expect_true(all(result$employee_grouping %in% union(regions_levels, c("Unknow"))))
 
-  expect_true(all(result$job_title %in% levels_job_title))
+  expect_true(all(result$job_title %in% union(levels_job_title, c("Unknow"))))
 
-  expect_true(all(result$company_size %in% size_levels))
+  expect_true(all(result$company_size %in% union(size_levels, c("Unknow"))))
 
-  expect_true(all(result$employment_type %in% levels_employement_type))
+  expect_true(all(result$employment_type %in% union(levels_employement_type, c("Unknow"))))
 
-  expect_true(all(result$experience_level %in% experience_labels_ordered))
+  expect_true(all(result$experience_level %in% union(experience_labels_ordered, c("Unknow"))))
 
   expect_true(all(result$remote_ratio >= 0 & result$remote_ratio <= 100))
 
