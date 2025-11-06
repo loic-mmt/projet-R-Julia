@@ -105,6 +105,7 @@ if (verbose) message(sprintf("  -> Lignes restantes : %d", nrow(data)))
 #' @return An object of class "salary_tbl"
 #' @export
 finalize_salary_tbl <- function(data) {
+  stopifnot(is.data.frame(data))
   # Vérification des colonnes
   required_cols <- c("work_year", "experience_level", "employment_type", "job_title",
                     "salary", "salary_currency", "salary_in_usd", "employee_residence",
