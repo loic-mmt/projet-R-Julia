@@ -229,11 +229,13 @@ levels_iso2 <- c(
     "UY","PE","EC","BZ","PA",
     "CF","EG","GH","KE","NG","ZA","CI","SN","TZ","UG","ET","CM","DZ","TN","MA",
     "AE","AS","BD","CN","HK","ID","IL","IN","IQ","IR","JP","KW","KR","KZ","LA",
-    "MY","PH","PK","QA","SA","SG","TH","TR","VN","XK","UZ","NZ","AU"
+    "MY","PH","PK","QA","SA","SG","TH","TR","VN","XK","UZ","NZ",
+    "AU", "KP", "TW", "CV", "HN"
   )
 
 #'@export
 mapping_total <- c(
+    "KP"="KP", "TW"="TW", "CV"="CV", "HN"="HN",
     "AL" = "AL", "AM" = "AM", "AT" = "AT", "BA" = "BA", "BE" = "BE", 
     "BG" = "BG", "BY" = "BY", "CH" = "CH", "CY" = "CY", "CZ" = "CZ", 
     "DE" = "DE", "DK" = "DK", "EE" = "EE", "ES" = "ES", "FI" = "FI", 
@@ -291,9 +293,9 @@ mapping_total <- c(
 
 #'@export
 size_mapping <- c(
-    'S': 'Small',
-    'M': 'Medium', 
-    'L': 'Large'
+    'S'= 'Small',
+    'M'= 'Medium', 
+    'L'= 'Large'
 )
 
 #'@export

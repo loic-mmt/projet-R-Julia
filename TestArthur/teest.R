@@ -104,3 +104,5 @@ data$company_location <- DataCleanR::normalize_factor(data$company_location, map
 data$company_location
 data$company_grouping <- DataCleanR::normalize_factor(data$company_location, region_map, regions_levels)
 data$company_grouping
+
+normalize_remote_ratio(data)$remote_ratio

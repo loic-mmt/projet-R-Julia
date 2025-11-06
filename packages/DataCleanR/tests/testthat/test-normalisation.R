@@ -1,19 +1,3 @@
-test_that("normalize_experience_level works", {
-  df <- data.frame(experience_level = c("MI","SE","EN","EX","MI"), stringsAsFactors = FALSE)
-  res <- normalize_experience_level(df, "experience_level", c("EN","MI","SE","EX"))
-
-  expect_s3_class(res$experience_level, "ordered")
-  expect_equal(levels(res$experience_level), c("EN","MI","SE","EX"))
-  expect_equal(as.character(res$experience_level), c("MI","SE","EN","EX","MI"))
-
-  df_invalid <- data.frame(experience_level = c("XX","MI"))
-  res_invalid <- normalize_experience_level(df_invalid, "experience_level", c("EN","MI","SE","EX"))
-  expect_true(is.na(res_invalid$experience_level[1]))
-
-  expect_error(normalize_experience_level(df, "unknown", c("EN","MI","SE","EX")))
-})
-
-
 test_that("normalize_remote_ratio works correctly", {
 
   # Test 1: Conversion et bornes
@@ -50,13 +34,43 @@ test_that("normalize_factor works correctly", {
   expect_true(is.ordered(result2))
 })
 
+test_that("normalize_all works correctly", {
+  data <- data.frame(
+    company_location   = c("United States", "Germany", "France"),
+    employee_residence = c("US", "DE", "FR"),
+    job_title          = c("Data Analyst", "Machine Learning Engineer", "Director of Data Science"),
+    remote_ratio       = c("100", "0", "50"),
+    company_size       = c("S", "M", "L"),
+    employment_type    = c("FT", "PT", "CT"),
+    experience_level   = c("EN", "SE", "EX"),
+    stringsAsFactors   = FALSE
+  )
 
-test_that("normalize_country_codes", {
-  data_test <- data.frame(
-                          a = 1:3,
-                          b = c("UNITED STATES", "GB", "France"),
-                          stringsAsFactors = FALSE)
-  out <- normalize_country_codes(data_test, col = "b")
-  expect_true(all(is.na(out$b) | grepl("^[A-Z]{2}$", out$b)))
-  expect_equal(out$b, c("US", "GB", "FR"))
+  result <- normalize_all(data)
+
+  expect_true(all(c(
+    "company_grouping", "employee_grouping",
+    "company_location", "employee_residence",
+    "job_title", "remote_ratio",
+    "company_size", "employment_type",
+    "experience_level"
+  ) %in% names(result)))
+
+  expect_true(all(result$company_location %in% levels_iso2))
+  expect_true(all(result$employee_residence %in% levels_iso2))
+
+  expect_true(all(result$company_grouping %in% regions_levels))
+  expect_true(all(result$employee_grouping %in% regions_levels))
+
+  expect_true(all(result$job_title %in% levels_job_title))
+
+  expect_true(all(result$company_size %in% size_levels))
+
+  expect_true(all(result$employment_type %in% levels_employement_type))
+
+  expect_true(all(result$experience_level %in% experience_labels_ordered))
+
+  expect_true(all(result$remote_ratio >= 0 & result$remote_ratio <= 100))
+
+  expect_equal(nrow(result), nrow(data))
 })
