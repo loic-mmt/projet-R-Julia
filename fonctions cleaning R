@@ -10,11 +10,11 @@ Loïc- deduplicate_rows — Supprimer les doublons selon des clés.
 
 # Normalisation (valeurs & référentiels)
 Margot- normalize_experience_level — Mapper {EN, MI, SE, EX} en facteur ordonné.
-Arthur- normalize_employment_type — Normaliser {FT, PT, CT, FL} en libellés/facteur.
-Loïc- normalize_company_size — Mapper {S, M, L} en facteur ordonné.
-Margot- normalize_remote_ratio — Forcer dans [0,100], éventuellement binaire 0/100.
-Arthur- normalize_job_title — Harmoniser les intitulés via dictionnaire de correspondance.
-Loïc- normalize_country_codes — Convertir pays en codes ISO cohérents (+ région si besoin).
+Oui Arthur- normalize_employment_type — Normaliser {FT, PT, CT, FL} en libellés/facteur.
+Oui Loïc- normalize_company_size — Mapper {S, M, L} en facteur ordonné.
+Oui Margot- normalize_remote_ratio — Forcer dans [0,100], éventuellement binaire 0/100.
+Oui Arthur- normalize_job_title — Harmoniser les intitulés via dictionnaire de correspondance.
+Oui Loïc- normalize_country_codes — Convertir pays en codes ISO cohérents (+ région si besoin).
 
 # Monnaie & montants
 Margot- convert_currency_to_usd — Convertir salaires en USD et vérifier la cohérence.

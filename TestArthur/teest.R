@@ -1,113 +1,106 @@
 region_map <- c(
-      "AL"="Europe","AM"="Asia","AT"="Europe","BA"="Europe","BE"="Europe","BG"="Europe","BY"="Europe","CH"="Europe",
-      "CY"="Europe","CZ"="Europe","DE"="Europe","DK"="Europe","EE"="Europe","ES"="Europe","FI"="Europe","FR"="Europe",
-      "GB"="Europe","GR"="Europe","HR"="Europe","HU"="Europe","IE"="Europe","IS"="Europe","IT"="Europe","JE"="Europe",
-      "LT"="Europe","LU"="Europe","LV"="Europe","MD"="Europe","MK"="Europe","MT"="Europe","NL"="Europe","NO"="Europe",
-      "PL"="Europe","PT"="Europe","RO"="Europe","RS"="Europe","RU"="Europe","SE"="Europe","SI"="Europe","SK"="Europe","UA"="Europe",
-
-      "AR"="South America","BO"="South America","BR"="South America","BS"="North America","CA"="North America",
-      "CL"="South America","CO"="South America","CR"="North America","DO"="North America","MX"="North America",
-      "PR"="North America","US"="North America","VE"="South America","UY"="South America","PE"="South America","EC"="South America","BZ"="North America","PA"="North America",
-
-      "CF"="Africa","DZ"="Africa","EG"="Africa","GH"="Africa","KE"="Africa","MA"="Africa","NG"="Africa","TN"="Africa","ZA"="Africa","CI"="Africa","SN"="Africa","TZ"="Africa","UG"="Africa","ET"="Africa","CM"="Africa",
-
-      "AE"="Asia","AS"="Oceania","BD"="Asia","CN"="Asia","HK"="Asia","ID"="Asia","IL"="Asia","IN"="Asia","IQ"="Asia","IR"="Asia",
-      "JP"="Asia","KW"="Asia","KR"="Asia","KZ"="Asia","LA"="Asia","MY"="Asia","PH"="Asia","PK"="Asia","QA"="Asia","SA"="Asia",
-      "SG"="Asia","TH"="Asia","TR"="Asia","VN"="Asia","XK"="Europe","UZ"="Asia","NZ"="Oceania","AU"="Oceania"
+      "AL"="Europe","AM"="Asia","AT"="Europe","BA"="Europe",
+      "BE"="Europe","BG"="Europe","BY"="Europe","CH"="Europe",
+      "CY"="Europe","CZ"="Europe","DE"="Europe","DK"="Europe",
+      "EE"="Europe","ES"="Europe","FI"="Europe","FR"="Europe",
+      "GB"="Europe","GR"="Europe","HR"="Europe","HU"="Europe",
+      "IE"="Europe","IS"="Europe","IT"="Europe","JE"="Europe",
+      "LT"="Europe","LU"="Europe","LV"="Europe","MD"="Europe",
+      "MK"="Europe","MT"="Europe",
+      "NL"="Europe","NO"="Europe",
+      "PL"="Europe","PT"="Europe","RO"="Europe","RS"="Europe",
+      "RU"="Europe","SE"="Europe","SI"="Europe","SK"="Europe",
+      "UA"="Europe",
+      "AR"="South America","BO"="South America","BR"="South America",
+      "BS"="North America","CA"="North America",
+      "CL"="South America","CO"="South America","CR"="North America",
+      "DO"="North America",
+      "MX"="North America",
+      "PR"="North America","US"="North America","VE"="South America",
+      "UY"="South America","PE"="South America","EC"="South America",
+      "BZ"="North America","PA"="North America",
+      "CF"="Africa","DZ"="Africa","EG"="Africa","GH"="Africa",
+      "KE"="Africa","MA"="Africa","NG"="Africa","TN"="Africa",
+      "ZA"="Africa","CI"="Africa","SN"="Africa","TZ"="Africa",
+      "UG"="Africa","ET"="Africa","CM"="Africa",
+      "AE"="Asia","AS"="Oceania","BD"="Asia","CN"="Asia","HK"="Asia",
+      "ID"="Asia","IL"="Asia","IN"="Asia","IQ"="Asia","IR"="Asia",
+      "JP"="Asia","KW"="Asia","KR"="Asia","KZ"="Asia","LA"="Asia",
+      "MY"="Asia","PH"="Asia","PK"="Asia","QA"="Asia","SA"="Asia",
+      "SG"="Asia","TH"="Asia","TR"="Asia","VN"="Asia","XK"="Europe",
+      "UZ"="Asia","NZ"="Oceania","AU"="Oceania"
     )
-allowed_iso2 <- unique(c(
 
-    "AL","AM","AT","BA","BE","BG","BY","CH","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HR","HU","IE","IS","IT","JE","LT","LU","LV","MD","MK","MT","NL","NO","PL","PT","RO","RS","RU","SE","SI","SK","UA",
+regions_levels <- c("South America", "Europe", "Asia", "North America", "Africa", "Oceania")
 
-    "AR","BO","BR","BS","CA","CL","CO","CR","DO","MX","PR","US","VE","UY","PE","EC","BZ","PA",
+levels_iso2 <- c(
 
-    "CF","DZ","EG","GH","KE","MA","NG","TN","ZA","CI","SN","TZ","UG","ET","CM","DZ","TN","MA",
-
-    "AE","AS","BD","CN","HK","ID","IL","IN","IQ","IR","JP","KW","KR","KZ","LA","MY","PH","PK","QA","SA","SG","TH","TR","VN","XK","UZ","NZ","AU"
-  ))
-
-name_to_iso2 <- c(
-    "UNITED STATES"="US","UNITED KINGDOM"="GB","GREAT BRITAIN"="GB","ENGLAND"="GB", "FRANCE" = "FR",
-    "CZECH REPUBLIC"="CZ","CZECHIA"="CZ","RUSSIA"="RU","REPUBLIC OF KOREA"="KR","SOUTH KOREA"="KR",
-    "NORTH KOREA"="KP","VIETNAM"="VN","VIET NAM"="VN","HONG KONG"="HK","TAIWAN"="TW",
-    "UNITED ARAB EMIRATES"="AE","UAE"="AE","SAUDI ARABIA"="SA","TURKEY"="TR","TÜRKIYE"="TR",
-    "BOSNIA AND HERZEGOVINA"="BA","NORTH MACEDONIA"="MK","MACEDONIA"="MK","BOLIVIA"="BO",
-    "MOLDOVA"="MD","REPUBLIC OF MOLDOVA"="MD","LAOS"="LA","LAO PDR"="LA","CAPE VERDE"="CV",
-    "IVORY COAST"="CI","CÔTE D'IVOIRE"="CI","SOUTH AFRICA"="ZA"
+    "AL","AM","AT","BA","BE","BG","BY","CH","CY","CZ","DE","DK","EE",
+    "ES","FI","FR","GB","GR","HR","HU","IE","IS","IT","JE","LT","LU",
+    "LV","MD","MK","MT","NL","NO","PL","PT","RO","RS","RU","SE","SI","SK","UA",
+    "AR","BO","BR","BS","CA","CL","CO","CR","DO","MX","PR","US","VE",
+    "UY","PE","EC","BZ","PA",
+    "CF","EG","GH","KE","NG","ZA","CI","SN","TZ","UG","ET","CM","DZ","TN","MA",
+    "AE","AS","BD","CN","HK","ID","IL","IN","IQ","IR","JP","KW","KR","KZ","LA",
+    "MY","PH","PK","QA","SA","SG","TH","TR","VN","XK","UZ","NZ","AU"
   )
-
-iso3_to_iso2 <- c(
-    "ARE"="AE","ALB"="AL","ARM"="AM","ARG"="AR","ASM"="AS","AUT"="AT","AUS"="AU","BIH"="BA","BEL"="BE",
-    "BOL"="BO","BRA"="BR","BHS"="BS","CAN"="CA","CAF"="CF","CHE"="CH","CHL"="CL","CHN"="CN","COL"="CO",
-    "CRI"="CR","CYP"="CY","CZE"="CZ","DEU"="DE","DNK"="DK","DOM"="DO","DZA"="DZ","EST"="EE","EGY"="EG",
-    "ESP"="ES","FIN"="FI","FRA"="FR","GBR"="GB","GHA"="GH","GRC"="GR","HKG"="HK","HND"="HN","HRV"="HR",
-    "HUN"="HU","IDN"="ID","IRL"="IE","ISR"="IL","IND"="IN","IRQ"="IQ","IRN"="IR","ITA"="IT","JEY"="JE",
-    "JPN"="JP","KEN"="KE","KWT"="KW","LTU"="LT","LUX"="LU","LVA"="LV","MAR"="MA","MDA"="MD","MKD"="MK",
-    "MLT"="MT","MEX"="MX","MYS"="MY","NGA"="NG","NLD"="NL","NZL"="NZ","PHL"="PH","PAK"="PK","POL"="PL",
-    "PRI"="PR","PRT"="PT","ROU"="RO","SRB"="RS","RUS"="RU","SWE"="SE","SGP"="SG","SVN"="SI","SVK"="SK",
-    "THA"="TH","TUN"="TN","TUR"="TR","UKR"="UA","USA"="US","UZB"="UZ","VNM"="VN","ZAF"="ZA"
+mapping_total <- c(
+    "AL" = "AL", "AM" = "AM", "AT" = "AT", "BA" = "BA", "BE" = "BE", 
+    "BG" = "BG", "BY" = "BY", "CH" = "CH", "CY" = "CY", "CZ" = "CZ", 
+    "DE" = "DE", "DK" = "DK", "EE" = "EE", "ES" = "ES", "FI" = "FI", 
+    "FR" = "FR", "GB" = "GB", "GR" = "GR", "HR" = "HR", "HU" = "HU", 
+    "IE" = "IE", "IS" = "IS", "IT" = "IT", "JE" = "JE", "LT" = "LT", 
+    "LU" = "LU", "LV" = "LV", "MD" = "MD", "MK" = "MK", "MT" = "MT", 
+    "NL" = "NL", "NO" = "NO", "PL" = "PL", "PT" = "PT", "RO" = "RO", 
+    "RS" = "RS", "RU" = "RU", "SE" = "SE", "SI" = "SI", "SK" = "SK", 
+    "UA" = "UA", "AR" = "AR", "BO" = "BO", "BR" = "BR", "BS" = "BS", 
+    "CA" = "CA", "CL" = "CL", "CO" = "CO", "CR" = "CR", "DO" = "DO", 
+    "MX" = "MX", "PR" = "PR", "US" = "US", "VE" = "VE", "UY" = "UY", 
+    "PE" = "PE", "EC" = "EC", "BZ" = "BZ", "PA" = "PA", "CF" = "CF", 
+    "EG" = "EG", "GH" = "GH", "KE" = "KE", "NG" = "NG", "ZA" = "ZA", 
+    "CI" = "CI", "SN" = "SN", "TZ" = "TZ", "UG" = "UG", "ET" = "ET", 
+    "CM" = "CM", "DZ" = "DZ", "TN" = "TN", "MA" = "MA", "AE" = "AE", 
+    "AS" = "AS", "BD" = "BD", "CN" = "CN", "HK" = "HK", "ID" = "ID", 
+    "IL" = "IL", "IN" = "IN", "IQ" = "IQ", "IR" = "IR", "JP" = "JP", 
+    "KW" = "KW", "KR" = "KR", "KZ" = "KZ", "LA" = "LA", "MY" = "MY", 
+    "PH" = "PH", "PK" = "PK", "QA" = "QA", "SA" = "SA", "SG" = "SG", 
+    "TH" = "TH", "TR" = "TR", "VN" = "VN", "XK" = "XK", "UZ" = "UZ", 
+    "NZ" = "NZ", "AU" = "AU",
+    "UNITED STATES"="US","UNITED KINGDOM"="GB","GREAT BRITAIN"="GB",
+    "ENGLAND"="GB", "FRANCE" = "FR",
+    "CZECH REPUBLIC"="CZ","CZECHIA"="CZ","RUSSIA"="RU","REPUBLIC OF KOREA"="KR",
+    "SOUTH KOREA"="KR",
+    "NORTH KOREA"="KP","VIETNAM"="VN","VIET NAM"="VN","HONG KONG"="HK",
+    "TAIWAN"="TW",
+    "UNITED ARAB EMIRATES"="AE","UAE"="AE","SAUDI ARABIA"="SA","TURKEY"="TR",
+    "TÜRKIYE"="TR",
+    "BOSNIA AND HERZEGOVINA"="BA","NORTH MACEDONIA"="MK","MACEDONIA"="MK",
+    "BOLIVIA"="BO",
+    "MOLDOVA"="MD","REPUBLIC OF MOLDOVA"="MD","LAOS"="LA","LAO PDR"="LA",
+    "CAPE VERDE"="CV",
+    "IVORY COAST"="CI","CÔTE D'IVOIRE"="CI","SOUTH AFRICA"="ZA",
+    "ARE"="AE","ALB"="AL","ARM"="AM","ARG"="AR","ASM"="AS","AUT"="AT",
+    "AUS"="AU","BIH"="BA","BEL"="BE",
+    "BOL"="BO","BRA"="BR","BHS"="BS","CAN"="CA","CAF"="CF","CHE"="CH",
+    "CHL"="CL","CHN"="CN","COL"="CO",
+    "CRI"="CR","CYP"="CY","CZE"="CZ","DEU"="DE","DNK"="DK","DOM"="DO",
+    "DZA"="DZ","EST"="EE","EGY"="EG",
+    "ESP"="ES","FIN"="FI","FRA"="FR","GBR"="GB","GHA"="GH","GRC"="GR",
+    "HKG"="HK","HND"="HN","HRV"="HR",
+    "HUN"="HU","IDN"="ID","IRL"="IE","ISR"="IL","IND"="IN","IRQ"="IQ",
+    "IRN"="IR","ITA"="IT","JEY"="JE",
+    "JPN"="JP","KEN"="KE","KWT"="KW","LTU"="LT","LUX"="LU","LVA"="LV",
+    "MAR"="MA","MDA"="MD","MKD"="MK",
+    "MLT"="MT","MEX"="MX","MYS"="MY","NGA"="NG","NLD"="NL","NZL"="NZ",
+    "PHL"="PH","PAK"="PK","POL"="PL",
+    "PRI"="PR","PRT"="PT","ROU"="RO","SRB"="RS","RUS"="RU","SWE"="SE",
+    "SGP"="SG","SVN"="SI","SVK"="SK",
+    "THA"="TH","TUN"="TN","TUR"="TR","UKR"="UA","USA"="US",
+    "UZB"="UZ","VNM"="VN","ZAF"="ZA","UK" = "GB",
+    "EL" = "GR", "KO" = "XK","XKX" = "XK"
   )
-synonyms <- c(
-    "UK" = "GB",
-    "EL" = "GR",
-    "KO" = "XK",
-    "XKX" = "XK"
-  )
-
-
-normalize_country_codes <- function(data_tbl,
-                                    col = "company_location",
-                                    output_col = col,
-                                    add_region = TRUE,
-                                    region_col = "company_region",
-                                    strict = FALSE,
-                                    verbose = TRUE) {
-
-  if (!is.data.frame(data)) stop("data doit être un data.frame")
-  if (!col %in% names(data)) stop(sprintf("Colonne '%s' introuvable dans data", col))
-
-  v_in <- as.character(data[[col]])
-  v <- toupper(trimws(v_in))
-  v <- ifelse(v %in% names(synonyms), unname(synonyms[v]), v)
-
-  
-
-
-  idx_iso3 <- which(v %in% names(iso3_to_iso2))
-  if (length(idx_iso3)) v[idx_iso3] <- unname(iso3_to_iso2[v[idx_iso3]])
-
-  idx_name <- which(v %in% names(name_to_iso2))
-  if (length(idx_name)) v[idx_name] <- unname(name_to_iso2[v[idx_name]])
-
-
-  bad_fmt <- which(!grepl("^[A-Z]{2}$", v) | is.na(v))
-  bad_val <- which(!(v %in% allowed_iso2) & !is.na(v))
-  bad <- sort(unique(c(bad_fmt, bad_val)))
-
-  if (length(bad)) {
-    if (strict) {
-      stop(sprintf("Codes pays invalides aux lignes: %s (exemples: %s)",
-                   paste(utils::head(bad, 10), collapse = ", "),
-                   paste(utils::head(unique(v[bad]), 5), collapse = ", ")))
-    } else if (verbose) {
-      message(sprintf("normalize_country_codes: %d valeur(s) non standard détectée(s), conservée(s) telle(s) quelle(s). Exemples: %s",
-                      length(bad), paste(utils::head(unique(v[bad]), 5), collapse = ", ")))
-    }
-  }
-
-  changed <- sum(v != toupper(trimws(as.character(v_in))), na.rm = TRUE)
-  if (verbose && changed) message(sprintf("normalize_country_codes: %d valeur(s) modifiée(s).", changed))
-
-
-  data[[output_col]] <- v
-
-  if (add_region) {
-
-    region_map
-    reg <- unname(region_map[ v ])
-    reg[is.na(reg)] <- NA_character_
-    data[[region_col]] <- reg
-  }
-
-  return(data)
-}
+data <-read_raw_csv("/home/arthur/Desktop/projet-R-Julia/R/data_raw/ds_salaries.csv")
+data$company_location <- DataCleanR::normalize_factor(data$company_location, mapping_total, levels_iso2)
+data$company_location
+data$company_grouping <- DataCleanR::normalize_factor(data$company_location, region_map, regions_levels)
+data$company_grouping
