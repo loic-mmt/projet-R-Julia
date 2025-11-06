@@ -213,7 +213,7 @@ region_map <- c(
       "JP"="Asia","KW"="Asia","KR"="Asia","KZ"="Asia","LA"="Asia",
       "MY"="Asia","PH"="Asia","PK"="Asia","QA"="Asia","SA"="Asia",
       "SG"="Asia","TH"="Asia","TR"="Asia","VN"="Asia","XK"="Europe",
-      "UZ"="Asia","NZ"="Oceania","AU"="Oceania"
+      "UZ"="Asia","NZ"="Oceania","AU"="Oceania", "KP"="Asia", "TW"="Asia", "CV"="Africa"
     )
 
 #'@export
@@ -226,11 +226,11 @@ levels_iso2 <- c(
     "ES","FI","FR","GB","GR","HR","HU","IE","IS","IT","JE","LT","LU",
     "LV","MD","MK","MT","NL","NO","PL","PT","RO","RS","RU","SE","SI","SK","UA",
     "AR","BO","BR","BS","CA","CL","CO","CR","DO","MX","PR","US","VE",
-    "UY","PE","EC","BZ","PA",
+    "UY","PE","EC","BZ","PA","HN",
     "CF","EG","GH","KE","NG","ZA","CI","SN","TZ","UG","ET","CM","DZ","TN","MA",
     "AE","AS","BD","CN","HK","ID","IL","IN","IQ","IR","JP","KW","KR","KZ","LA",
     "MY","PH","PK","QA","SA","SG","TH","TR","VN","XK","UZ","NZ",
-    "AU", "KP", "TW", "CV", "HN"
+    "AU", "KP", "TW", "CV"
   )
 
 #'@export

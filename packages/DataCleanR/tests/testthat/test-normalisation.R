@@ -36,7 +36,7 @@ test_that("normalize_factor works correctly", {
 
 test_that("normalize_all works correctly", {
   data <- data.frame(
-    company_location   = c("United States", "Germany", "France"),
+    company_location   = c("PT", "KP", "KP"),
     employee_residence = c("US", "DE", "FR"),
     job_title          = c("Data Analyst", "Machine Learning Engineer", "Director of Data Science"),
     remote_ratio       = c("100", "0", "50"),
@@ -56,19 +56,19 @@ test_that("normalize_all works correctly", {
     "experience_level"
   ) %in% names(result)))
 
-  expect_true(all(result$company_location %in% union(levels_iso2, c("Unknow"))))
-  expect_true(all(result$employee_residence %in% union(levels_iso2, c("Unknow"))))
+  expect_true(all(result$company_location %in% union(levels_iso2, c("Unknown"))))
+  expect_true(all(result$employee_residence %in% union(levels_iso2, c("Unknown"))))
 
-  expect_true(all(result$company_grouping %in% union(regions_levels, c("Unknow"))))
-  expect_true(all(result$employee_grouping %in% union(regions_levels, c("Unknow"))))
+  expect_true(all(result$company_grouping %in% union(regions_levels, c("Unknown"))))
+  expect_true(all(result$employee_grouping %in% union(regions_levels, c("Unknown"))))
 
-  expect_true(all(result$job_title %in% union(levels_job_title, c("Unknow"))))
+  expect_true(all(result$job_title %in% union(levels_job_title, c("Unknown"))))
 
-  expect_true(all(result$company_size %in% union(size_levels, c("Unknow"))))
+  expect_true(all(result$company_size %in% union(size_levels, c("Unknown"))))
 
-  expect_true(all(result$employment_type %in% union(levels_employement_type, c("Unknow"))))
+  expect_true(all(result$employment_type %in% union(levels_employement_type, c("Unknown"))))
 
-  expect_true(all(result$experience_level %in% union(experience_labels_ordered, c("Unknow"))))
+  expect_true(all(result$experience_level %in% union(experience_labels_ordered, c("Unknown"))))
 
   expect_true(all(result$remote_ratio >= 0 & result$remote_ratio <= 100))
 
