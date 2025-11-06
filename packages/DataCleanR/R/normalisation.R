@@ -1,25 +1,3 @@
-#' Normalize an ordered factor column
-#'
-#' @param data data.frame A data frame containing the column to normalize
-#' @param column_name character Name of the column to normalize
-#' @param levels_ordered character Vector of levels in the desired order
-#' @return data.frame The same data frame with the specified column converted to an ordered factor
-#' @export
-normalize_experience_level <- function(data, column_name, levels_ordered) {
-  # Vérifier que la colonne existe
-  if (!column_name %in% names(data)) {
-    stop(sprintf("La colonne '%s' n'existe pas dans le dataframe.", column_name))
-  }
-
-  # Convertir en facteur ordonné
-  data[[column_name]] <- factor(data[[column_name]],
-                                levels = levels_ordered,
-                                ordered = TRUE)
-
-  return(data)
-}
-
-
 #' Normalize a vector to a factor. (use with "df$col <- normalize_to_factor(df$col, mapping, levels)")
 #'
 #' @param vector the vector to normalize
@@ -70,7 +48,8 @@ levels_job_title <- c(
     "AI Developer",
     "Senior",
     "Specialist",
-    "Operations")
+    "Operations"
+  )
 
 #' @export
 mapping_job_title <- c(
@@ -189,7 +168,8 @@ mapping_job_title <- c(
   "Data Analytics Specialist" = "Specialist",
   "Data Management Specialist" = "Specialist",
   "Autonomous Vehicle Technician" = "Specialist",
-  "Data Operations Engineer" = "Operations")
+  "Data Operations Engineer" = "Operations"
+)
 
 #'@export
 mapping_employement_type <- c(
