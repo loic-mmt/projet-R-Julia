@@ -4,6 +4,8 @@
 #' @return Data frame avec les salaires convertis en USD
 #' @export
 convert_currency_to_usd <- function(data) {
+  # Ignore linter warning - exchange_rates_to_usd is exported from Mapping.R
+  # nolint start: object_usage_linter
   if (!all(c("salary", "salary_currency", "salary_in_usd", "work_year") %in% names(data))) {
     stop("Les colonnes 'salary', 'salary_currency', 'salary_in_usd' et 'work_year' doivent exister.")
   }
