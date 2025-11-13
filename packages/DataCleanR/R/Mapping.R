@@ -278,7 +278,7 @@ experience_mapping <- c(
 experience_labels_ordered <- c("Entry-level", "Mid-level", "Senior-level", "Executive-level")
 
 
-#' @export
+#'@export
 currencies_levels <- c(
   "AUD", "BRL", "CAD", "CHF", "CLP", "CZK", "DKK", "EUR",
   "GBP", "HKD", "HUF", "ILS", "INR", "JPY", "MXN", "NOK",
@@ -288,7 +288,7 @@ currencies_levels <- c(
   "ZAR"
 )
 
-#' @export
+#'@export
 exchange_rates_to_usd <- data.frame(
   year = rep(2020:2023, each = 41),
   currency = rep(currencies_levels, times = 4),
