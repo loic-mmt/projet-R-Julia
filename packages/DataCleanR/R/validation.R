@@ -54,32 +54,32 @@ standardize_colnames <- function(data) {
 #' @export
 enforce_types <- function(data, num_threshold = 0.9, max_factor_levels = 20) {
   out <- data
-  
+
   for (col in names(out)) {
     x <- out[[col]]
-    
+
     # Ignorer si déjà au bon type
     if (is.numeric(x) || is.factor(x) || inherits(x, "Date")) {
       next
     }
-    
+
     # Nettoyer les espaces
     if (is.character(x)) {
       x <- trimws(x)
     }
-    
+
     # Calculer le nombre de valeurs non-NA
     valid_values <- x[!is.na(x) & x != ""]
     n_valid <- length(valid_values)
-    
+
     if (n_valid == 0) {
       next  # Colonne vide
     }
-    
-    # 🔹 1. Essayer conversion numérique
+
+    #  conversion numérique
     x_numeric <- suppressWarnings(as.numeric(x))
     n_numeric_valid <- sum(!is.na(x_numeric[!is.na(x) & x != ""]))
-    
+
     # Si au moins num_threshold% des valeurs sont convertibles en numérique
     if (n_numeric_valid / n_valid >= num_threshold) {
       # Vérifier si ce sont des entiers
@@ -90,16 +90,16 @@ enforce_types <- function(data, num_threshold = 0.9, max_factor_levels = 20) {
       }
       next
     }
-    # 🔹 2. Vérifier si c'est un facteur potentiel
+    # Vérifier si c'est un facteur potentiel
     n_unique <- length(unique(valid_values))
-    
+
     # Convertir en facteur SEULEMENT si <= max_factor_levels valeurs uniques
     if (n_unique <= max_factor_levels) {
       out[[col]] <- as.factor(x)
       next
     }
-    
-    # 🔹 3. Sinon garder comme character
+
+    # Sinon garder comme character
     out[[col]] <- as.character(x)
   }
   return(out)
